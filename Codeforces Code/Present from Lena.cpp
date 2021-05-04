@@ -26,15 +26,12 @@ int main()
                     cout<<"  ";
                 else if(j==n+2-i)
                     cout<<0;
-                else if(j==n+i)
-                    cout<<" "<<0;
                 else if(j>n+2-i && j<=n+1)
                 {
                     count++;
                     cout<<" "<<count;
-                    
                 }
-                else if(j>n+1 && j<n+i)
+                else if(j>n+1 && j<=n+i)
                 {
                     count--;
                     cout<<" "<<count;
@@ -50,32 +47,20 @@ int main()
                     cout<<"  ";
                 else if(j==i-n)
                     cout<<0;
-                else if(j==index)
-                {
-                    cout<<" "<<0;
-                    index--;
-                }    
                 else if(j>i-n && j<=n+1)
                 {
                     count++;
                     cout<<" "<<count;
                 }
-                else if(j>n+1 && j<index)
+                else if(j>n+1 && j<=index)
                 {
                     count--;
                     cout<<" "<<count;
                 }
-                
             }
-            
-            
-            
-            
+             index--;
         }
         cout<<endl;
-        
-        
-        
     }
     
     
