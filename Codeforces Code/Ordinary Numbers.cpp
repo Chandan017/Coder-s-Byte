@@ -6,6 +6,7 @@ using namespace std;
 #define ss second
 #define vi vector<int>
 
+
 int main()
 {
     ios_base::sync_with_stdio(false);
@@ -17,33 +18,16 @@ int main()
     {
         ll n;
         cin>>n;
-        if(n<=9)
-            cout<<n<<endl;
-        else if(n==10)
-            cout<<n-1<<endl;
-        else
+        ll ans =0;
+        for(ll i =1;i<=n;i=i*10+1)
         {
-            ll count =9;
-            for(int i=11;i<=n;i++)
+            for(int j=1;j<=9;j++)
             {
-            
-                string s = to_string(i);
-                bool flag=false;
-                for(int i=0;i<s.length()-1;i++)
-                {
-                    if(s[i]!=s[i+1])
-                    {
-                        flag=true;
-                        break;
-                    }
-                }
-                if(flag==false)
-                    count++;
-                
+                if(i*j<=n)
+                    ans++;
             }
-            cout<<count<<endl;
-            
         }
+        cout<<ans<<endl;
         
         
     }
