@@ -58,15 +58,7 @@ public:
             
         }
         
-//         for(int i=n-1;i>=0;i--)
-//         {
-//             atl.push({i,n-1});
-//         }
-        
-//         for(int j=m-1;j>=0;j--)
-//         {
-//             atl.push({n-1,j});
-//         }
+
         
         bfs(heights , pacific , pac);
         
