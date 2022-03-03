@@ -12,7 +12,7 @@ public:
         int cnt=-1;
         vector<int> prev=intervals[0];
         
-        for(auto it:intervals)
+        for(auto &it:intervals)
         {
             if(prev[1] > it[0])
                 cnt++;
