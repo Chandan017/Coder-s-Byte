@@ -9,15 +9,15 @@ public:
         
         sort(intervals.begin() , intervals.end() , comp);
         int n=intervals.size();
-        int cnt=-1;
-        vector<int> prev=intervals[0];
+        int cnt=0;
+        int prev=0;
         
-        for(auto &it:intervals)
+        for(int i=1;i<n;i++)
         {
-            if(prev[1] > it[0])
+            if(intervals[prev][1] > intervals[i][0])
                 cnt++;
             else
-                prev=it;
+                prev=i;
         }
         
         return cnt;
