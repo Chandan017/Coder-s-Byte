@@ -66,13 +66,6 @@ public:
         int dx[]={-1,1,0,0};
         int dy[]={0,0,-1,1};
         
-        cout<<q.size()<<endl;
-        for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<m;j++)
-                cout<<grid[i][j]<<" ";
-            cout<<endl;
-        }
         
         cout<<endl<<endl;
         
