@@ -10,12 +10,13 @@ public:
             maxReach[s[i]-'a']=i;
         }
         int j=0;
+        
+        
         for(int i=0;i<s.length();i++)
         {
             j=maxReach[s[i]-'a'];
 
             int prev=i;
-            cout<<prev<<endl;
             while(i<j)
             {
                 if(maxReach[s[i]-'a'] <=j)
@@ -26,13 +27,8 @@ public:
                     i++;
                 }
             }
-            
-            if(i==j)
-            {
-                ans.push_back(j+1-prev);
-            }
-                
-            
+          
+            ans.push_back(j+1-prev);  
             
         }
         
