@@ -36,10 +36,6 @@ public:
             
             else if(mpp1[pattern[i]]!=str[i])
                 return false;
-        }
-       
-        for(int i=0;i<pattern.size();i++)
-        {
             if(mpp2.find(str[i])==mpp2.end())
             {
                 mpp2[str[i]]=pattern[i];
@@ -47,6 +43,8 @@ public:
             else if(mpp2[str[i]]!=pattern[i])
                 return false;
         }
+       
+      
         
      
         return true;
