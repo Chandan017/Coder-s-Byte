@@ -3,9 +3,13 @@ public:
     bool wordPattern(string pattern, string s) {
                
         s+=" ";
-        vector<string> cnt(26,"-1");
+        vector<string> str;
         string x="";
         int ind=0;
+        
+        unordered_map<char,string> mpp1;
+        unordered_map<string,char> mpp2;
+        
         
         for(int i=0;i<s.length();i++)
         {
@@ -13,37 +17,36 @@ public:
                 x+=s[i];
             else
             {
-               if(ind<pattern.size())
-               {
-                    if(cnt[pattern[ind]-'a']=="-1")
-                {
-                    cnt[pattern[ind]-'a']=x;
-                    
-                }
-                else if(cnt[pattern[ind]-'a']!=x)
-                    return false;
-               }
+                str.push_back(x);
                 x="";
-                ind++;
             }
+            
         }
         
-        if(ind!=pattern.size())
+        if(str.size()!=pattern.size())
             return false;
         
-        unordered_set<string> str;
-       
-        for(auto it:cnt)
-        {
-            if(it!="-1")
-            {
-                if(str.find(it)==str.end())
-                str.insert(it);
-            else 
-                return false;
-            }
-        }
         
+        for(int i=0;i<pattern.size();i++)
+        {
+            if(mpp1.find(pattern[i])==mpp1.end())
+            {
+                mpp1[pattern[i]]=str[i];
+            }
+            
+            else if(mpp1[pattern[i]]!=str[i])
+                return false;
+        }
+       
+        for(int i=0;i<pattern.size();i++)
+        {
+            if(mpp2.find(str[i])==mpp2.end())
+            {
+                mpp2[str[i]]=pattern[i];
+            }
+            else if(mpp2[str[i]]!=pattern[i])
+                return false;
+        }
         
      
         return true;
