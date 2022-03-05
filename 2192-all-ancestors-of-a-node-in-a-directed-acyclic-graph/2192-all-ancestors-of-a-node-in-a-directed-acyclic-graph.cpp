@@ -1,7 +1,8 @@
 class Solution {
 public:
-     vector<int> adj[1000];
-    vector<int> getAll(int node)
+    
+    
+    vector<int> getAll(int node , vector<int> adj[])
     {
         
         vector<int> ans;
@@ -33,7 +34,7 @@ public:
         
         
        
-        int size=-1;
+         vector<int> adj[n];
         for(int i=0;i<edges.size();i++)
         {
             int from=edges[i][0];
@@ -41,24 +42,18 @@ public:
             
             adj[to].push_back(from);  // transpose
             
-            size=max(size,to);
         }
         
         vector<vector<int>> ans;
         
-        for(int i=0;i<=size;i++)
+        for(int i=0;i<n;i++)
         {
-            vector<int> temp=getAll(i);
+            vector<int> temp=getAll(i,adj);
             
             ans.push_back(temp);
         }
         
-        while(ans.size()!=n)
-        {
-            vector<int> temp;
-            ans.push_back(temp);
-        }
-        
+
         return ans;
         
     }
