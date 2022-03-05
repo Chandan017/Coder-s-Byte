@@ -5,7 +5,7 @@ public:
     {
         map<char,int> mpp;
         
-        for(auto it:s)
+        for(auto &it:s)
         {
             mpp[it]++;
         }
@@ -26,12 +26,12 @@ public:
         }
         
         
-        for(auto it:mpp)
+        for(auto &it:mpp)
         {
             ans.push_back(it.second);
         }
         
-        cout<<mpp.size()<<endl;
+        
         
         return ans;
         
