@@ -33,7 +33,6 @@ public:
             int node=q.front();
             q.pop();
             
-            ans.push_back(node);
             
             for(auto &it:adj[node])
             {
@@ -43,9 +42,15 @@ public:
                     q.push(it);
             }
         }
-            
+         
         
-        sort(ans.begin() , ans.end());
+        for(int i=0;i<n;i++)
+        {
+            if(indegree[i]==0)
+                ans.push_back(i);
+        }
+        
+       
         
         
         return ans;
