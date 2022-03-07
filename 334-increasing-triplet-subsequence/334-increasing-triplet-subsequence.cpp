@@ -18,10 +18,13 @@ public:
                 prefixMini[i]=min( nums[i] , prefixMini[i-1]);    
         }
         
-        suffixMaxi[n-1]=nums[n-1];
-       for(int i=n-2;i>=0;i--)
+       
+       for(int i=n-1;i>=0;i--)
        {
-           suffixMaxi[i]=max(nums[i] , suffixMaxi[i+1]);
+           if(i==n-1)
+                suffixMaxi[i]=nums[i];
+           else
+                suffixMaxi[i]=max(nums[i] , suffixMaxi[i+1]);
                
        }
         
