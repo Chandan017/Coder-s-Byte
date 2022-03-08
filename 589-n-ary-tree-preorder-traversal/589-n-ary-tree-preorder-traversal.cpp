@@ -21,26 +21,15 @@ public:
 class Solution {
 public:
     vector<int> ans;
-    void get(Node* root)
-    {
-        if(root==NULL)
-            return ;
-        ans.push_back(root->val);
-        
-        for(auto &it:root->children)
-        {
-            get(it);
-
-        }
-        
-        return  ;
-    }
     vector<int> preorder(Node* root) {
        
         
         if(root==NULL)
             return ans;
-        get(root);
+        
+        ans.push_back(root->val);
+        for(auto &it:root->children)
+            preorder(it);
         return ans;
     }
 };
