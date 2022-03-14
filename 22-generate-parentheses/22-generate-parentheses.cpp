@@ -19,7 +19,7 @@ public:
         return ;
     }
     
-    bool check(string s)
+    bool check(string &s)
     {
         stack<char> st;
         
