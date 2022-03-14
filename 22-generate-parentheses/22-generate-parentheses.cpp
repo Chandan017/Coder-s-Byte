@@ -6,7 +6,8 @@ public:
     {
         if(s.length()==2*n)
         {
-            temp.push_back(s);
+            if(check(s))
+                temp.push_back(s);
             return ;
         }
         
@@ -45,12 +46,7 @@ public:
         string s="";
         get(n,s);
         
-        vector<string> ans;
-        for(auto it:temp)
-        {
-            if(check(it))
-                ans.push_back(it);
-        }
-        return ans;
+      
+        return temp;
     }
 };
