@@ -3,22 +3,22 @@ public:
     int lengthOfLongestSubstring(string s) {
         
         
-        unordered_set<char> st;
+        vector<bool> st(256,0);
         int n=s.length();
         int maxi=0 , i=0 , j=0;
         
         while(i<n && j<n)
         {
-            if(st.find(s[j])==st.end())
+            if(st[s[j]]==0)
             {
-                st.insert(s[j]);
+                st[s[j]]=1;;
                 j++;
                 
                 maxi=max(maxi , j-i);
             }
             else
             {
-                st.erase(s[i]);
+                st[s[i]]=0;
                 i++;
             }
         }
