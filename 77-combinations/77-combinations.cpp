@@ -3,7 +3,7 @@ public:
     
     vector<vector<int>> ans;
     
-    void get(int n , int k , vector<int> temp,int start)
+    void get(int n , int k , vector<int> &temp,int start)
     {
         if(temp.size()==k)
         {
