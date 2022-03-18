@@ -22,34 +22,39 @@
 class Solution {
 public:
     
-    TreeNode* generate(vector<int> &nums , int start , int end)
+    TreeNode* generate(ListNode* head , ListNode* tail)
     {
-        if(start > end)
+        if(head==tail)
             return NULL;
         
-        int mid=(start+end)/2;
+        if(head->next==tail)
+        {
+            TreeNode* root=new TreeNode(head->val);
+            return root;
+        }
         
-        TreeNode* root=new TreeNode(nums[mid]);
+        ListNode* fast=head , *slow=head;
         
-        root->left=generate(nums , start , mid-1);
+        while(fast!=tail && fast->next!=tail)
+        {
+            fast=fast->next->next;
+            slow=slow->next;
+        }
+       
         
-        root->right= generate(nums , mid+1 , end);
+        TreeNode* root=new TreeNode(slow->val);
         
+        root->left=generate(head , slow);
+        
+        root->right=generate(slow->next , tail);        
         return root;
     }
     
     
     TreeNode* sortedListToBST(ListNode* head) {
         
-        vector<int>  nums;
-        
-        while(head)
-        {
-            nums.push_back(head->val);
-            head=head->next;
-        }
-        
-        TreeNode* root=generate(nums , 0 , nums.size()-1);
+                
+        TreeNode* root=generate(head , NULL);
         return root;
       
         
