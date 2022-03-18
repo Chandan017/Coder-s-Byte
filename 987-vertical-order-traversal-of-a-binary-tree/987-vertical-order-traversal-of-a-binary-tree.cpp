@@ -41,11 +41,11 @@ public:
             
         }
         
-        for(auto it:mpp)
+        for(auto &it:mpp)
         {
             vector<int> temp;
             
-            for(auto j:it.second)
+            for(auto &j:it.second)
             {
                 temp.insert(temp.end() , j.second.begin() , j.second.end());
             }
