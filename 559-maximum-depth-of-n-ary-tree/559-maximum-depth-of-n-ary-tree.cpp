@@ -24,7 +24,7 @@ public:
         if(root==NULL)
             return 0;
         int maxi=0;
-        for(auto it:root->children)
+        for(auto &it:root->children)
         {
             int curr=maxDepth(it);
             
