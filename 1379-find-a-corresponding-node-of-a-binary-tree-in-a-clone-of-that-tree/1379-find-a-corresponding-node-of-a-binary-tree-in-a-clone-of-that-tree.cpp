@@ -10,31 +10,30 @@
 
 class Solution {
 public:
-    TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target) {
+    
+    TreeNode* ans;
+    void check(TreeNode* o , TreeNode* c , TreeNode* target)
+    {
+        if(o==NULL)
+            return ;
+        check(o->left , c->left , target);
         
-        queue<pair<TreeNode* , TreeNode*>> q;
-        q.push({original , cloned});
-        
-        while(!q.empty())
+        if(o==target)
         {
-            TreeNode* origin=q.front().first;
-            TreeNode* duplicate=q.front().second;
-            q.pop();
-            
-            if(origin==target)
-                return duplicate;
-            
-            if(origin->left)
-            {
-                q.push({origin->left , duplicate->left});
-                
-            }
-            
-            if(origin->right)
-                q.push({origin->right , duplicate ->right});
+            ans=c;
+            return ;
         }
         
-        return NULL;
+        check(o->right , c->right , target);
+        return ;
+    }
+    
+    TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target) {
+        
+        
+        check(original , cloned , target);
+        
+        return ans;
         
     }
 };
