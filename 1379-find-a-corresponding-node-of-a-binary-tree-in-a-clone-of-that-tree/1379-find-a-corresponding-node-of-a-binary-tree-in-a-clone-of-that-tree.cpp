@@ -12,7 +12,7 @@ class Solution {
 public:
     
     TreeNode* ans;
-    void check(TreeNode* o , TreeNode* c , TreeNode* target)
+    void check(TreeNode* &o , TreeNode* &c , TreeNode* &target)
     {
         if(o==NULL)
             return ;
