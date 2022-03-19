@@ -10,8 +10,9 @@ public:
     }
     
     void push(int val) {
+        ind++;
         freq[val]++;
-        pq.push({freq[val] , {ind++ , val}});
+        pq.push({freq[val] , {ind , val}});
         
         
     }
