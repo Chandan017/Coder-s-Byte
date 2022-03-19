@@ -14,11 +14,11 @@ public:
         {
             if(isPrime[i])
             {
-                int j=i*2;
+                int j=i*i;
                 while(j<n)
                 {
                     isPrime[j]=false;
-                    j=j+i;
+                    j+=i;
                 }
             }
         }
