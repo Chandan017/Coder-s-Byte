@@ -11,25 +11,32 @@
  */
 class Solution {
 public:
-    vector<int> v;
     
-    void inorder(TreeNode* root)
+    int ans=0;
+    
+    void inorder(TreeNode* root,int &k)
     {
         if(root==NULL)
             return;
-        inorder(root->left);
-        v.push_back(root->val);
+        inorder(root->left,k);
+      
+        k-=1;
+        if(k==0)
+        {
+            ans=root->val;
+            return ;
+        }
+        else
+            inorder(root->right,k);
         
-        inorder(root->right);
-        
-        return ;
+
     }
     
     
     int kthSmallest(TreeNode* root, int k) {
      
-        inorder(root);
-        
-        return v[k-1];
+        inorder(root,k);
+        cout<<endl;
+        return ans;
     }
 };
