@@ -36,7 +36,6 @@ public:
     int kthSmallest(TreeNode* root, int k) {
      
         inorder(root,k);
-        cout<<endl;
         return ans;
     }
 };
