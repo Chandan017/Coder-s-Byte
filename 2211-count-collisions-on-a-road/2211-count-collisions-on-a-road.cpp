@@ -10,7 +10,7 @@ public:
         while(i<n && directions[i]=='L')
             i++;
         
-        for(;i<n;i++)
+        while(i<n)
         {
             if(directions[i]=='R')
                 fromRight++;
@@ -23,6 +23,8 @@ public:
                 
                 fromRight=0;
             }
+            
+            i++;
         }
         return cnt;
         
