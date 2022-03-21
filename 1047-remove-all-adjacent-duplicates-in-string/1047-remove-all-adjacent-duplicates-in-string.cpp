@@ -19,8 +19,8 @@ public:
             ans+=st.top();
             st.pop();
         }
-        
-        reverse(ans.begin() , ans.end());
+        if(ans.size()>1)
+            reverse(ans.begin() , ans.end());
         return ans;
     }
 };
