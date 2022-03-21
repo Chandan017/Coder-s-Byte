@@ -2,41 +2,33 @@ class Solution {
 public:
     vector<int> partitionLabels(string s) {
         
-        int maxReach[26]={0};
         vector<int> ans;
         
-        for(int i=0;i<s.length();i++)
+        int maxRange[26]={0};
+        int n=s.length();
+        for(int i=0;i<n;i++)
         {
-            maxReach[s[i]-'a']=i;
+            maxRange[s[i]-'a']=i;
         }
+        
+        for(auto it:maxRange)
+            cout<<it<<" ";
+        cout<<endl;
+        
         int j=0;
-        
-        
-        for(int i=0;i<s.length();i++)
+        int prev=0;
+        for(int i=0;i<n;i++)
         {
-            j=maxReach[s[i]-'a'];
-
-            int prev=i;
-            while(i<j)
-            {
-                if(maxReach[s[i]-'a'] <=j)
-                    i++;
-                else
-                {
-                    j=maxReach[s[i]-'a'];
-                    i++;
-                }
-            }
-          
-            ans.push_back(j+1-prev);  
+            j=max(j,maxRange[s[i]-'a']);
             
+            if(i==j)
+            {
+                ans.push_back(j-prev+1);
+                prev=i+1;
+            }
         }
-        
-        
         
         return ans;
-        
-        
         
     }
 };
