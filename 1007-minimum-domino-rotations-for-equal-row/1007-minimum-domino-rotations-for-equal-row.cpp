@@ -1,62 +1,76 @@
 class Solution {
 public:
     
-    pair<int,int>  getMax(vector<int> &nums)
+    pair<int,int>  getMax(vector<int> &tops , vector<int> &bottoms)
     {
-        map<int,int> mpp;
+        int mpp1[6]={0};
+        int mpp2[6]={0};
         
-        for(auto it:nums)
-            mpp[it]++;
-        
-        
-        int val=0 , freq=0;
-        for(auto it:mpp)
+        for(int i=0;i<tops.size();i++)
         {
-            if(it.second > freq)
+            mpp1[tops[i]-1]++;
+            mpp2[bottoms[i]-1]++;
+        }
+        
+        int val1=0 , val2=0 , freq1=0 , freq2=0;
+        for(int i=0;i<6;i++)
+        {
+            if(mpp1[i] > freq1)
             {
-                val=it.first;
-                freq=it.second;
+                val1=i;
+                freq1=mpp1[i];
+            }
+            
+            if(mpp2[i] > freq2)
+            {
+                val2=i;
+                freq2=mpp2[i];
             }
         }
         
-        return {val,freq};
+        return {val1+1 , val2+1};
     }
     
-    int solve(vector<int> &nums1 , vector<int> &nums2 , int val)
+    int solve(vector<int> &tops , vector<int> &bottoms , int val1 , int val2)
     {
-        int cnt=0;
-        for(int i=0;i<nums1.size();i++)
+        
+        int cnt1=0 , cnt2=0;
+        
+        for(int i=0;i<tops.size();i++)
         {
-            if(nums1[i]!=val)
+            if(cnt1!=-1 && tops[i]!=val1)
             {
-                if(nums2[i]==val)
-                    cnt++;
+                if(bottoms[i]==val1)
+                    cnt1++;
                 else
-                {
-                    cnt=-1;
-                    break;
-                }
+                    cnt1=-1;
+            }
+            
+            if(cnt2!=-1 && bottoms[i]!=val2)
+            {
+                if(tops[i]==val2)
+                    cnt2++;
+                else
+                    cnt2=-1;
             }
         }
         
-        return cnt;
+        
+        if(cnt1==-1)
+            return cnt2;
+        if(cnt2==-1)
+            return cnt1;
+        return min(cnt1 , cnt2);
+        
     }
     int minDominoRotations(vector<int>& tops, vector<int>& bottoms) {
         
         
-        pair<int,int> maxTop=getMax(tops);
-        pair<int,int> maxBottom=getMax(bottoms);
+        pair<int,int> maxVals=getMax(tops , bottoms);
+       
+        int ans=solve(tops , bottoms , maxVals.first , maxVals.second);
         
-        int topCnt=solve(tops,bottoms , maxTop.first);
-        int bottomCnt=solve(bottoms , tops , maxBottom.first);
-        
-        if(topCnt==-1)
-            return bottomCnt;
-        if(bottomCnt==-1)
-            return topCnt;
-        
-        return min(topCnt , bottomCnt);
-        
+        return ans;
         
     }
 };
