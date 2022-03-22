@@ -76,13 +76,7 @@ public:
             
             maxi=max(maxi , area);
         }
-        
-        for(auto it:nsl)
-            cout<<it<<" ";
-        cout<<endl;
-        for(auto it:nsr)
-            cout<<it<<" ";
-        cout<<endl;
+    
         return maxi;
         
         
