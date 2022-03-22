@@ -2,25 +2,18 @@ class Solution {
 public:
     string getSmallestString(int n, int k) {
         
-        string ans="";
+        string ans(n,'a');
         
-        int len=n;
-        while(n--)
+        k=k-n;
+        
+        while(n>0 && k>0)
         {
-            for(int i=25;i>=0;i--)
-            {
-                char c=i+'a';
-                int val=i+1;
-                int currLen=ans.length()+1;
-                if(k-val >=len-currLen)
-                {
-                    ans+=c;
-                    k-=val;
-                    break;
-                }
-            }
+            int mini=min(25 , k);
+            ans[--n]=mini+'a';
+            k-=mini;
         }
-        reverse(ans.begin() , ans.end());
+        
+        
         return ans;
         
     }
