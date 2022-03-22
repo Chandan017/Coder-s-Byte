@@ -4,9 +4,6 @@ public:
     bool check(string &s1 , string &s2)
     {
         vector<char> mpp1(26,'0') , mpp2(26,'0');
-        for(int i=0;i<26;i++)
-            cout<<mpp1[i]<<" ";
-        cout<<mpp1.size()<<endl;
         int n=s1.length();
         
         for(int i=0;i<n;i++)
@@ -22,14 +19,6 @@ public:
                 return false;
         }
         
-//         for(int  i=0;i<26;i++)
-//         {
-//             cout<<mpp1[i]<<" ";
-//         }
-//         cout<<endl;
-//         for(int i=0;i<26;i++)
-//             cout<<mpp2[i]<<" ";
-//         cout<<endl;
         return true;
     }
     vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
