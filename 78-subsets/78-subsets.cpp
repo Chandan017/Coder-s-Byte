@@ -4,7 +4,7 @@ public:
     
     
     
-    void get(vector<int> &nums , vector<int> temp , int ind)
+    void get(vector<int> &nums , vector<int> &temp , int ind)
     {
         if(ind==nums.size())
         {
