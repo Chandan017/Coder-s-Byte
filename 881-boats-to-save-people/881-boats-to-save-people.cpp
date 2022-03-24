@@ -9,10 +9,13 @@ public:
         int cntBoats=0;
         while(low <=high)
         {
-            if(people[low] + people[high] <=limit)
+            // check pople with less wieghts and high weight both can travel
+            // then take less wight people together else only high weight people
+            if(people[low] + people[high] <=limit) 
                 low++;
             
             high--;
+            // increment no. of baots
             cntBoats++;
         }
         
