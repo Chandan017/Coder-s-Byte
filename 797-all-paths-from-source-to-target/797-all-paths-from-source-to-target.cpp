@@ -23,7 +23,7 @@ public:
                 continue;
             }
             
-            for(auto it:graph[node])
+            for(auto &it:graph[node])
             {
                 path.push_back(it);
                 q.push({it , path});
