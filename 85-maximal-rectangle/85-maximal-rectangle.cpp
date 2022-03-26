@@ -64,9 +64,6 @@ public:
         int n=matrix.size();
         int m=matrix[0].size();
         vector<int> heights(m,0);
-        for(auto it:heights)
-            cout<<it<<" ";
-        cout<<endl<<endl;
         int maxArea=0;
         
         for(int i=0;i<n;i++)
@@ -78,9 +75,6 @@ public:
                 else
                     heights[j]=0;
             }
-            for(auto it:heights)
-                cout<<it<<" ";
-            cout<<endl;
             
             int currMAH=getMAH(heights);
             
