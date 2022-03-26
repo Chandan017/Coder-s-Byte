@@ -1,29 +1,7 @@
 class Solution {
     
 private:
-    
-    vector<int> getNSL(vector<int> &heights)
-    {
-        stack<pair<int,int>> st;
-        int  n=heights.size();
-        vector<int> nsl(n);
         
-        for(int i=0;i<n;i++)
-        {
-            while(st.size()>0 && st.top().first>=heights[i])
-                st.pop();
-            
-            if(st.size()==0)
-                nsl[i]=-1;
-            else
-                nsl[i]=st.top().second;
-            
-            st.push({heights[i] , i});
-        }
-        
-        return nsl;
-    }
-    
     vector<int> getWidth(vector<int> &heights)
     {
         int n=heights.size();
