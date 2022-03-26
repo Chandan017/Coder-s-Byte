@@ -24,34 +24,46 @@ private:
         return nsl;
     }
     
-    vector<int> getNSR(vector<int> &heights)
+    vector<int> getWidth(vector<int> &heights)
     {
         int n=heights.size();
         stack<pair<int,int>> st;
-        vector<int> nsr(n);
+        vector<int> width(n);
         
         for(int i=n-1;i>=0;i--)
         {
             while(st.size()>0 && st.top().first >=heights[i])
                 st.pop();
             if(st.size()==0)
-                nsr[i]=n;
+                width[i]=n;
             else
-                nsr[i]=st.top().second;
+                width[i]=st.top().second;
             st.push({heights[i] , i});
         }
-        return nsr;
+        
+        while(st.size())
+            st.pop();
+        for(int i=0;i<n;i++)
+        {
+            while(st.size()>0 && st.top().first >=heights[i])
+                st.pop();
+            if(st.size()==0)
+                width[i]-=(-1);
+            else
+                width[i]-=(st.top().second) ;
+            
+            st.push({heights[i] , i});
+            width[i]-=1;
+        }        
+        return width;
     }
     int getMAH(vector<int> &heights)
     {
-        vector<int> nsl=getNSL(heights);
-        vector<int> nsr=getNSR(heights);
+        vector<int> width=getWidth(heights);
         int maxArea=0;
         for(int i=0;i<heights.size();i++)
-        {
-            int width=nsr[i]-nsl[i]-1;
-            
-            int area=heights[i] * width;
+        {   
+            int area=heights[i] * width[i];
             
             maxArea=max(maxArea , area);
         }
