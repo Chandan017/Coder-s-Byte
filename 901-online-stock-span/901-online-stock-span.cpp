@@ -22,23 +22,6 @@ public:
         if(st.size()==0)
             return (ind - (-1));
         return (ind - (st.top().second));
-        
-//         if(st.empty())
-//             return (ind - (-1));
-//         else if(st.size() >0 && st.top().first >price)
-//             return (ind-st.top().second);
-//         else if(st.size() >0 && st.top().first <=price)
-//         {
-//             while(st.size() >0 && st.top().first <=price)
-//                 st.pop();
-            
-//             if(st.size()==0)
-//                 return (ind-(-1));
-//             else
-//                 return (ind-st.top().second);
-//         }
-        
-//         return 1;
     }
 };
 
