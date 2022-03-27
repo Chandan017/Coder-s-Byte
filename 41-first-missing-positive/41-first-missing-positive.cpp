@@ -2,7 +2,7 @@ class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
         
-        set<int> st;
+        unordered_set<int> st;
         long maxi=0;
         for(auto it:nums)
         {
