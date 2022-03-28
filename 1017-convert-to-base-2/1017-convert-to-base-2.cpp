@@ -15,7 +15,7 @@ public:
                 rem+=2;
                 n+=1;
             }
-            ans+=(to_string(abs(rem)));
+            ans+=(to_string(rem));
         }
         reverse(ans.begin() , ans.end());
         return ans;
