@@ -2,8 +2,8 @@ class Solution {
 public:
     string reverseWords(string s) {
         
-         stack<string>st;
-         string ans="";
+        stack<string>st;
+        string ans="";
         int i=0;
         int n=s.length();
         while(i < n)
@@ -23,14 +23,15 @@ public:
         }
         
        
-        while(st.size())
+        while(st.size()-1)
         {   
             ans+=st.top();
             st.pop();
             ans+=' ';
             
         }
-        ans.pop_back();
+        
+        ans+=st.top();
 
         
         return ans;
