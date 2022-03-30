@@ -2,23 +2,22 @@ class Solution {
 public:
     int jump(vector<int>& nums) {
         
-        int l=0 , r=0;
+        int maxReach=0 , reach=0;
         int jumps=0;
         
-        while(r< nums.size() -1)
+        for(int i=0;i<nums.size();i++)
         {
-            int farthest = 0;
-            
-            for(int i=l;i<=r;i++)
+            if(i > reach)
             {
-                farthest = max(farthest , i+ nums[i]);
+                jumps++;
+                reach=maxReach;
             }
             
-            l= r+1;
-            r=farthest ;
-            jumps++;
+            maxReach=max(maxReach ,nums[i] + i);
         }
+        
         return jumps;
+        
         
     }
 };
