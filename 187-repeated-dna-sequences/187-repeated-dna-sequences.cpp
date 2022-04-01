@@ -19,7 +19,9 @@ public:
             else
             {
                 temp+=s[i];
-                cout<<temp<<" ";
+                
+                if(mpp.find(temp)!=mpp.end() && mpp[temp]==1)
+                    ans.push_back(temp);
                 
                 mpp[temp]++;
                 
@@ -27,12 +29,7 @@ public:
             }
                 
         }
-        cout<<endl;
-        for(auto it:mpp)
-        {
-            if(it.second > 1)
-                ans.push_back(it.first);
-        }
+        
         
         return ans;
         
