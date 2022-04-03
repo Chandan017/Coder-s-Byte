@@ -6,7 +6,7 @@ public:
         int n=s.length();
         stack<char> st;
         
-        for(auto it:s)
+        for(auto &it:s)
         {
             if(it=='(' || it=='[' || it=='{')
                 st.push(it);
