@@ -23,7 +23,14 @@ public:
     }
     ListNode* swapNodes(ListNode* head, int k) {
         
-        int len=getLen(head);
+        
+        int len=0;
+        ListNode* dummy=head;
+        while(dummy)
+        {
+            len++;
+            dummy=dummy->next;
+        }
         ListNode* firstNode , *secondNode , *temp=head;
         int ind=1;
         while(temp)
