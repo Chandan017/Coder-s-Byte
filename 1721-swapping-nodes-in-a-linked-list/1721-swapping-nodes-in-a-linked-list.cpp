@@ -10,30 +10,40 @@
  */
 class Solution {
 public:
+    
+    int getLen(ListNode* head)
+    {
+        int len=0;
+        while(head)
+        {
+            len++;
+            head=head->next;
+        }
+        return len;
+    }
     ListNode* swapNodes(ListNode* head, int k) {
         
+        int len=getLen(head);
         ListNode* firstNode , *secondNode , *temp=head;
-        
         int ind=1;
-        while(ind!=k)
+        while(temp)
         {
+            
+            if(firstNode!=NULL && secondNode!=NULL)
+                break;
+            
+            if(ind==k)
+                firstNode=temp;
+            
+            if(ind==len-k+1)
+                secondNode=temp;
+            
             temp=temp->next;
             ind++;
-        }
-        
-        firstNode=temp;
-        secondNode=head;
-        
-        while(temp->next)
-        {
-            temp=temp->next;
-            secondNode=secondNode->next;
         }
         
         swap(firstNode->val , secondNode->val);
         
         return head;
-            
-        
     }
 };
