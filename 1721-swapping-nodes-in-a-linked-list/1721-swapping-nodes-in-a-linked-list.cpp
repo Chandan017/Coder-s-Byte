@@ -15,7 +15,7 @@ public:
         ListNode* firstNode , *secondNode , *temp=head;
         
         int ind=1;
-        while(temp && ind!=k)
+        while(ind!=k)
         {
             temp=temp->next;
             ind++;
