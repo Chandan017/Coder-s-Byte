@@ -4,20 +4,20 @@ public:
         
         int n=nums.size() , maxSum = 0 , currSum = 0 , left=0;
         
-        set<int> st;
+        vector<bool> vis(100001 , false);
         
         for(int i=0;i<n;i++)
         {
             
-            while(st.find(nums[i]) != st.end())
+            while(vis[nums[i]])
             {
-                st.erase(nums[left]);
+                vis[nums[left]] = false;
                 currSum -= nums[left];
                 left++;
             }
             
             currSum += nums[i];
-            st.insert(nums[i]);
+            vis[nums[i]] = true;
             
             maxSum = max(maxSum , currSum);
         }
