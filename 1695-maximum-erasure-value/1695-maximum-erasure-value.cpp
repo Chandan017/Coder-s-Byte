@@ -2,9 +2,9 @@ class Solution {
 public:
     int maximumUniqueSubarray(vector<int>& nums) {
         
-        int n=nums.size() , maxSum =INT_MIN , currSum = 0 , left=0;
+        int n=nums.size() , maxSum = 0 , currSum = 0 , left=0;
         
-        unordered_set<int> st;
+        set<int> st;
         
         for(int i=0;i<n;i++)
         {
