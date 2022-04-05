@@ -8,15 +8,9 @@ public:
         
         for(int i=0;i<n;i++)
         {
-            if(st.find(nums[i]) != st.end())
+            
+            while(st.find(nums[i]) != st.end())
             {
-                while(nums[left] != nums[i])
-                {
-                    st.erase(nums[left]);
-                    currSum -= nums[left];
-                    left++;
-                }
-                
                 st.erase(nums[left]);
                 currSum -= nums[left];
                 left++;
