@@ -19,18 +19,14 @@ public:
             int val = pq.top().second;
             pq.pop();
             
+            int temp=times;
+            times -= k;
+            
             if(times <= k)
-            {
-                int temp=times;
-                times -= k;
                 k-=temp;
-            }
+            
             else
-            {
-                int temp=times;
-                times -= k;
                 k-= (temp - times);
-            }
             
             if(times > 0)
                 pq.push({times , val});
