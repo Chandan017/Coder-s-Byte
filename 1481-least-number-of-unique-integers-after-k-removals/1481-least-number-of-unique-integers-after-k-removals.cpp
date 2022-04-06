@@ -4,14 +4,21 @@ public:
         
         priority_queue<pair<int,int> , vector<pair<int,int>> , greater<pair<int,int>>> pq;
         
-        map<int,int> mpp;
-        for(auto &it:arr)
-            mpp[it]++;
-        
-        for(auto &it:mpp)
+        sort(arr.begin() , arr.end());
+        int n=arr.size();
+        for(int i=0;i<n;i++)
         {
-            pq.push({it.second , it.first});
+            int cnt=1;
+            while(i<n-1 && arr[i]==arr[i+1])
+            {
+                cnt++;
+                i++;
+            }
+            
+            pq.push({cnt , arr[i]});
+            
         }
+    
         
         while(pq.size() > 0 && k>0)
         {
