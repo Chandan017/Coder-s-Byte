@@ -11,14 +11,12 @@ public:
         string tinyUrl = "http://tinyurl.com/" + to_string(val);
         mpp[tinyUrl] = longUrl;
         
-        cout<<tinyUrl<<endl;
         return tinyUrl;
     }
 
     // Decodes a shortened URL to its original URL.
     string decode(string shortUrl) {
         
-        cout<<mpp[shortUrl]<<endl;
         return mpp[shortUrl];
     }
 };
