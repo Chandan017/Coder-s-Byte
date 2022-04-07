@@ -6,13 +6,15 @@ public:
         
         for(auto &it:stones)
             pq.push(it);
-        
-        int ans=0;
-        
-        while(pq.size() > 1)
+                
+        while(pq.size() > 0)
         {
             int first = pq.top();
             pq.pop();
+            
+            if(pq.size() == 0)
+                return first;
+            
             int second = pq.top();
             pq.pop();
             
@@ -23,8 +25,6 @@ public:
             }
         }
         
-        if(pq.size() > 0)
-            ans = pq.top();        
-        return ans;
+       return 0;
     }
 };
