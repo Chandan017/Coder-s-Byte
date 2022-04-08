@@ -1,21 +1,8 @@
 class Solution {
 public:
-
-// class CPU{
-// public:
-//     int processTime ;
-//     int index;
-    
-//     CPU(int processTime , int index)
-//     {
-//         this->processTime = processTime ;
-//         this->index = index;
-//     }
-// };
     vector<int> getOrder(vector<vector<int>>& tasks) {
         
-        int n = tasks.size();
-        vector<int> ans;
+        int n=tasks.size();
         
         for(int i=0;i<n;i++)
             tasks[i].push_back(i);
@@ -23,40 +10,34 @@ public:
         sort(tasks.begin() , tasks.end());
         
         long currTime = tasks[0][0];
+        int ind=0;
         
-        cout<<currTime<<endl;
-        int ind = 0;
-        priority_queue<pair<int,int> , vector<pair<int,int>> , greater<pair<int,int>>> pq;
+        priority_queue<pair<int,int> , vector<pair<int,int>> , greater<pair<int,int>> > pq;
+        vector<int> ans;
         
-        while(ind < n || pq.size() > 0)
+        
+        while(ind < n ||  pq.size() > 0)
         {
-            
             if(pq.size()==0)
                 currTime = max(currTime , (long)tasks[ind][0]);
             
-            
-            while(ind < n && tasks[ind][0] <= currTime)
+            while(ind < n && tasks[ind][0] <=currTime)
             {
-                int time = tasks[ind][1];
-                int index = tasks[ind][2];
-                
-                // CPU temp(time , index);
-                pq.push({time , index});
-                
+                pq.push({tasks[ind][1] , tasks[ind][2]});
                 ind++;
             }
             
-            int processTime = pq.top().first;
+            int time = pq.top().first;
             int index = pq.top().second;
             pq.pop();
             
-            currTime += processTime ;
+            currTime += time;
             
             ans.push_back(index);
-            
-            
         }
         
         return ans;
+            
+        
     }
 };
