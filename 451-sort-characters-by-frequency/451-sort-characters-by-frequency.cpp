@@ -6,24 +6,23 @@ public:
         string ans="";
         for(auto it:s)
             freq[it]++;
-        
-        priority_queue<pair<int , char> > pq;  
+                
+        multimap<int , char , greater<int>> mpp;
         
         for(int i=0;i<256;i++)
         {
             if(freq[i] > 0)
-                pq.push({freq[i] , i});
+                mpp.insert({freq[i] , i});
         }
         
-        while(pq.size())
+        for(auto it:mpp)
         {
-            int times = pq.top().first ;
-            char c=pq.top().second;
+            int times = it.first ;
+            char c=it.second;
             
             while(times--)
                 ans += c;
             
-            pq.pop();
         }
         
         return ans;
