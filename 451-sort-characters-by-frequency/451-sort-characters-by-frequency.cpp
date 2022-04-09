@@ -7,21 +7,25 @@ public:
         for(auto it:s)
             freq[it]++;
                 
-        multimap<int , char , greater<int>> mpp;
+        map<int , vector<char> , greater<int>> mpp;
         
         for(int i=0;i<256;i++)
         {
             if(freq[i] > 0)
-                mpp.insert({freq[i] , i});
+                mpp[freq[i]].push_back(i);
         }
         
         for(auto it:mpp)
         {
             int times = it.first ;
-            char c=it.second;
+            vector<char> &temp = it.second;
             
-            while(times--)
-                ans += c;
+            for(auto j:temp)
+            {
+                int t=times;
+                while(t--)
+                    ans += j;
+            }
             
         }
         
