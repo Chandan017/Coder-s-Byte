@@ -59,7 +59,6 @@ public:
         {
             auto it = pq.top();
             pq.pop();
-          //  cout<<it[0]<<" "<<it[1]<<" "<<it[2]<<" "<<it[3]<<endl;
             ans.push_back({it[2] , it[3] });
         }
         
