@@ -31,7 +31,7 @@ public:
                 {
                     bool currAns = check(stones , ind , newK , n , dp);
                     
-                    ans = ans || currAns;
+                    ans = ans || currAns ;
                 }
             }
         }
