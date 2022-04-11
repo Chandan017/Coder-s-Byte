@@ -12,8 +12,10 @@ public:
             int r=i/m;
             int c=i%m;
             
-            int newR = ((i+k)%(n*m) ) /m;
-            int newC=((i+k)%(n*m))%m;
+            int newIndex = (i+k) % (n*m);
+            
+            int newR = newIndex / m;
+            int newC = newIndex % m;
             
             ans[newR][newC] = grid[r][c];
         }
