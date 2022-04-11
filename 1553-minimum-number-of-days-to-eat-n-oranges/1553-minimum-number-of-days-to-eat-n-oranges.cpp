@@ -38,7 +38,7 @@ public:
                 }
             }
             
-            for(auto &ele:st)
+            for(auto ele:st)
                 q.push(ele);
             
             days++;
