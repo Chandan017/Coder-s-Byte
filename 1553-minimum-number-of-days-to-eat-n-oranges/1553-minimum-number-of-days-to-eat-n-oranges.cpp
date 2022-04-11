@@ -1,53 +1,18 @@
 class Solution {
 public:
     
+    unordered_map<int,int> dp;
     int getMin(int n)
     {
-        queue<int> q;
+       if(n<=1)
+           return n;
         
-        q.push(n);
-        int days = 0;
-        while(!q.empty())
+        if(dp.find(n) == dp.end())
         {
-            int size = q.size();
-            set<int> st;
-            while(size--)
-            {
-                int leftOranges = q.front();
-                q.pop();
-                     
-                if(leftOranges < 0)
-                    continue;
-                if(leftOranges==0)
-                    return days;
-            
-                if(leftOranges % 3==0)
-                {
-                    int canEat = 2 * (leftOranges / 3);
-                
-                    st.insert(leftOranges - canEat );
-                }
-                
-                
-                if(leftOranges%2==0)
-                {
-                    int canEat = leftOranges / 2;
-                
-                    st.insert(leftOranges - canEat);
-                }
-                st.insert(leftOranges - 1);
-                        
-            }
-            
-            for(auto ele:st)
-                q.push(ele);
-            
-            days++;
-            
-            
+            dp[n] = 1 + min(n%2 + getMin(n/2) , n%3 + getMin(n/3));
         }
         
-        return days;
+        return dp[n];
     }
     int minDays(int n) {
         
