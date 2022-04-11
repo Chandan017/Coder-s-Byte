@@ -21,7 +21,7 @@ public:
                 if(leftOranges==0)
                     return days;
             
-                q.push(leftOranges - 1);
+                st.insert(leftOranges - 1);
             
                 if(leftOranges%2==0)
                 {
