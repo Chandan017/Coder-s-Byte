@@ -2,33 +2,33 @@ class Solution {
 public:
     string frequencySort(string s) {
         
-        int freq[256]={0};
-        string ans="";
+        int freq[256] ={0};
+        
         for(auto it:s)
             freq[it]++;
-                
-        map<int , vector<char> , greater<int>> mpp;
+        
+        priority_queue<pair<int,char> > pq;
         
         for(int i=0;i<256;i++)
         {
             if(freq[i] > 0)
-                mpp[freq[i]].push_back(i);
+                pq.push({freq[i] , i});
         }
         
-        for(auto it:mpp)
+        
+        string ans = "";
+        
+        while(pq.size())
         {
-            int times = it.first ;
-            vector<char> &temp = it.second;
+            int times = pq.top().first;
+            char c = pq.top().second;
+            pq.pop();
             
-            for(auto j:temp)
-            {
-                int t=times;
-                while(t--)
-                    ans += j;
-            }
-            
+            while(times--)
+                ans += c;
         }
         
         return ans;
+        
     }
 };
