@@ -21,21 +21,22 @@ public:
                 if(leftOranges==0)
                     return days;
             
-                st.insert(leftOranges - 1);
-            
-                if(leftOranges%2==0)
-                {
-                    int canEat = leftOranges / 2;
-                
-                    st.insert(leftOranges - canEat);
-                }
-            
                 if(leftOranges % 3==0)
                 {
                     int canEat = 2 * (leftOranges / 3);
                 
                     st.insert(leftOranges - canEat );
                 }
+                
+                
+                if(leftOranges%2==0)
+                {
+                    int canEat = leftOranges / 2;
+                
+                    st.insert(leftOranges - canEat);
+                }
+                st.insert(leftOranges - 1);
+                        
             }
             
             for(auto ele:st)
