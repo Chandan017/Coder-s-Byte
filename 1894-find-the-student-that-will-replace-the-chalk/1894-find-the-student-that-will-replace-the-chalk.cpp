@@ -2,27 +2,27 @@ class Solution {
 public:
     int chalkReplacer(vector<int>& chalk, int k) {
         
-        int n=chalk.size();
-        long long perCycleUsage  = 0;
+        long long sum=0;int ans=0;
+        for(auto i:chalk)
+            sum+=i;
         
-        for(int i=0;i<n;i++)
-            perCycleUsage += chalk[i];
+        int maxi=k%sum;
+        int i=0;
         
-        
-        k = k%perCycleUsage;
-        
-        if(k==0)
+        if(maxi == 0)
             return 0;
-        
-        for(int i=0;i<n;i++)
-        {
-            if(k < chalk[i])
+    
+        while(i<chalk.size()){
+            
+            if(chalk[i] > maxi)
                 return i;
             else
-                k -= chalk[i];
+                maxi -= chalk[i];
+            
+            i++;
+            
         }
-        
+    
         return 0;
-       
     }
 };
