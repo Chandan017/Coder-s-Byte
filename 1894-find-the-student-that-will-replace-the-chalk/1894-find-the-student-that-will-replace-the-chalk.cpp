@@ -8,8 +8,8 @@ public:
         for(int i=0;i<n;i++)
             perCycleUsage += chalk[i];
         
-        if(k > perCycleUsage)
-            k = k%perCycleUsage;
+        
+        k = k%perCycleUsage;
         
         if(k==0)
             return 0;
