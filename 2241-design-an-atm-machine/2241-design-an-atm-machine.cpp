@@ -2,12 +2,15 @@ class ATM {
 public:
     int n;
     vector<long> notes;
+    vector<int> denomination = {20,50,100,200,500};
     ATM() {
         
         n=5;
         
         for(int i=0;i<n;i++)
             notes.push_back(0);
+        
+        
     }
     
     void deposit(vector<int> banknotesCount) {
@@ -26,54 +29,16 @@ public:
         
         for(int i=n-1;i>=0;i--)
         {
-            if(amount>=500 && notes[i]>0 && i==4)
+            if(amount>=denomination[i] && notes[i]>0 )
             {
-                long cnt  = amount/500;
+                long cnt  = amount/denomination[i];
                 long take = min(cnt ,notes[i]);
                 
                 ans[i] = take;
                 notes[i] -= take;
-                amount -= (take*500);
+                amount -= (take*denomination[i]);
             }
-            else if(amount>=200 && notes[i]>0 && i==3)
-            {
-                long cnt = amount/200;
-                long take = min(cnt , notes[i]);
-                
-                ans[i] = take;
-                notes[i] -= take;
-                amount -= (take*200);
-            }
-            else if(amount>=100 && notes[i]>0 && i==2)
-            {
-                long cnt = amount/100;
-                long take = min(cnt , notes[i]);
-                
-                ans[i] = take;
-                notes[i] -= take;
-                
-                amount -= (take*100);
-            }
-            else if(amount>=50 && notes[i]>0 && i==1)
-            {
-                long cnt = amount/50;
-                long take = min(cnt , notes[i]);
-                
-                ans[i] = take;
-                notes[i] -= take;
-                
-                amount -= (take*50);
-            }
-            else if(amount>=20 && notes[i]>0 && i==0)
-            {
-                long cnt = amount/20;
-                long take = min(cnt , notes[i]);
-                
-                ans[i] = take;
-                notes[i] -= take;
-                
-                amount -= (take * 20);
-            }
+           
         }
         if(amount==0)
             return ans;
