@@ -7,8 +7,7 @@ public:
         
         n = balance.size();
         
-        for(auto it:balance)
-            bal.push_back(it);
+        bal = balance;
         
     }
     
