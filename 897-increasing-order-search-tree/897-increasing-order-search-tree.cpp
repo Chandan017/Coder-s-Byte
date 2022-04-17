@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    vector<int> inorder;
+    TreeNode* curr ;
     
     void get(TreeNode* root)
     {
@@ -20,8 +20,11 @@ public:
         
         get(root->left);
         
-        inorder.push_back(root->val);
+        root->left = NULL;
         
+        curr->right = root;
+        curr = root;
+            
         get(root->right);
         
         return ;
@@ -32,19 +35,11 @@ public:
         
         if(root==NULL)
             return root;
+         
+        TreeNode* ans = new TreeNode(0);
+        curr = ans;
         
         get(root);
-        
-        TreeNode* ans = new TreeNode(0);
-        TreeNode* temp = ans;
-        
-        for(auto it:inorder)
-        {
-            temp->right = new TreeNode(it);
-            temp = temp->right;
-        }
-        
-        
         return ans->right;
         
     }
