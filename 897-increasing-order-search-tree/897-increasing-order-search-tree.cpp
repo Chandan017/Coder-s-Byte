@@ -17,30 +17,24 @@ public:
     {
         if(root==NULL)
             return ;
-        
         get(root->left);
         
         root->left = NULL;
         
         curr->right = root;
         curr = root;
-            
+        
         get(root->right);
         
         return ;
-        
-        
     }
     TreeNode* increasingBST(TreeNode* root) {
         
-        if(root==NULL)
-            return root;
-         
         TreeNode* ans = new TreeNode(0);
         curr = ans;
         
         get(root);
-        return ans->right;
         
+        return ans->right;
     }
 };
