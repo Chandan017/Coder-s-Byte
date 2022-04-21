@@ -26,7 +26,6 @@ public:
             cnt++;
         }
         
-        cout<<halfSum<<endl;
         
         return cnt;
     }
