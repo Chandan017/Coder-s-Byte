@@ -1,23 +1,26 @@
 class Solution {
-private:
-    map<string,string> mpp;
-    int val = 0;
 public:
 
+    map<string , string> mpp;
+    int val = 0;
     // Encodes a URL to a shortened URL.
     string encode(string longUrl) {
         
-        val++ ;
-        string tinyUrl = "http://tinyurl.com/" + to_string(val);
-        mpp[tinyUrl] = longUrl;
+        string shortUrl = longUrl + to_string(val);
         
-        return tinyUrl;
+        mpp[shortUrl] = longUrl;
+        val++;
+        
+        return shortUrl;
+        
     }
 
     // Decodes a shortened URL to its original URL.
     string decode(string shortUrl) {
         
+        
         return mpp[shortUrl];
+        
     }
 };
 
