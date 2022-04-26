@@ -4,26 +4,31 @@ public:
         
         string ans = "";
         int n = s.length();
-        int cnt = 0;
-        
-        for(int i=n-1;i>=0;i--)
+        int i=n-1;
+        while(i>=0)
         {
-            if(s[i] != '-')
+            int cnt = 0;
+            while(cnt < k  && i>=0)
             {
-                if(cnt == k)
+                if(s[i]=='-')
                 {
-                    cnt = 0;
-                    ans += '-';
+                    i--;
+                    continue;
                 }
                 
-                ans += toupper(s[i]);
-                
+                if(islower(s[i]))
+                {
+                    s[i] = toupper(s[i]);
+                }
+                ans += s[i];
                 cnt++;
+                i--;
             }
+            ans += '-';
         }
         
-        
-        
+        while(ans.back()=='-')
+            ans.pop_back();
         reverse(ans.begin() , ans.end());
         
         return ans;
