@@ -1,15 +1,18 @@
 class Solution {
 public:
     
-    void dfs(int node ,multiset<char> &pq ,  vector<bool> &vis , string &s , vector<int> adj[] , vector<int> &parent , int &component)
+    void dfs(int node ,  priority_queue<char , vector<char> , greater<char> > &pq , vector<bool> &vis , vector<int> &parent , int &component , vector<vector<int>> &adj , string &s)
     {
         vis[node] = true;
         parent[node] = component;
-        pq.insert(s[node]);
+        pq.push(s[node]);
+        
         for(auto it:adj[node])
         {
             if(!vis[it])
-                dfs(it , pq , vis , s , adj , parent , component);
+            {
+                dfs(it , pq , vis , parent , component , adj , s);
+            }
         }
         
         return ;
@@ -17,53 +20,50 @@ public:
     string smallestStringWithSwaps(string s, vector<vector<int>>& pairs) {
         
         int n = s.length();
+        vector<vector<int>> adj(n+1);
         
-        vector<int> adj[n];
-        
-        for(auto it:pairs)
+        for(auto &it:pairs)
         {
-            int x = it[0];
-            int y = it[1];
+            int x = it[0] , y = it[1];
             
             adj[x].push_back(y);
             adj[y].push_back(x);
-            
         }
         
-        vector<bool> vis(n , false);
+        vector<bool> vis(n, false);
         vector<int> parent(n);
-        map<int , multiset<char> > mpp;
         iota(parent.begin() , parent.end() , 0);
+        
+        map<int ,  priority_queue<char , vector<char> , greater<char>> > mpp;
         int component = 0;
-        for(int i=0;i<n;i++)
+        
+        for(int i =0;i < n;i++)
         {
             if(!vis[i])
             {
-                multiset<char> pq;
+                 priority_queue<char , vector<char> , greater<char> > pq;
                 
-                dfs(i , pq , vis , s , adj , parent , component);
+                dfs(i , pq , vis , parent , component , adj , s);
                 
                 mpp[component] = pq;
                 
-                component++; 
+                component++;
             }
         }
         
         string ans = "";
         
-        for(int i =0;i<n;i++)
+        for(int i =0; i<n ;i++)
         {
             int key = parent[i];
             
-            multiset<char> &temp = mpp[key];
-            char x = *temp.begin();
-            
-            temp.erase(temp.begin());
+            char x = mpp[key].top();
+            mpp[key].pop();
             
             ans += x;
         }
-    
-        return ans;
         
+      //  reverse(ans.begin() , ans.end());
+        return ans;
     }
 };
