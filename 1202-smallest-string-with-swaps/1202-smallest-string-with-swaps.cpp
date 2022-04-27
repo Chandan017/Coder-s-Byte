@@ -1,11 +1,11 @@
 class Solution {
 public:
     
-    void dfs(int node ,priority_queue<char , vector<char> , greater<char> > &pq ,  vector<bool> &vis , string &s , vector<int> adj[] , vector<int> &parent , int &component)
+    void dfs(int node ,multiset<char> &pq ,  vector<bool> &vis , string &s , vector<int> adj[] , vector<int> &parent , int &component)
     {
         vis[node] = true;
         parent[node] = component;
-        pq.push(s[node]);
+        pq.insert(s[node]);
         for(auto it:adj[node])
         {
             if(!vis[it])
@@ -32,14 +32,14 @@ public:
         
         vector<bool> vis(n , false);
         vector<int> parent(n);
-        map<int , priority_queue<char , vector<char> , greater<char> > > mpp;
+        map<int , multiset<char> > mpp;
         iota(parent.begin() , parent.end() , 0);
         int component = 0;
         for(int i=0;i<n;i++)
         {
             if(!vis[i])
             {
-                priority_queue<char , vector<char> , greater<char> > pq;
+                multiset<char> pq;
                 
                 dfs(i , pq , vis , s , adj , parent , component);
                 
@@ -55,12 +55,14 @@ public:
         {
             int key = parent[i];
             
-            char x = mpp[key].top();
-            mpp[key].pop();
+            multiset<char> &temp = mpp[key];
+            char x = *temp.begin();
+            
+            temp.erase(temp.begin());
             
             ans += x;
         }
-        
+    
         return ans;
         
     }
