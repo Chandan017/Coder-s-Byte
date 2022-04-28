@@ -5,20 +5,18 @@ public:
     {
         if(parent[node]==node)
             return node;
-        
         parent[node] = getParent(parent , parent[parent[node]]);
         
         return parent[node];
     }
+    
+    
     int minCostConnectPoints(vector<vector<int>>& points) {
         
         int n = points.size();
+        priority_queue<vector<int> , vector<vector<int>> , greater<vector<int>> > pq;
         vector<int> parent(n);
         iota(parent.begin() , parent.end() , 0);
-    
-        priority_queue<vector<int> , vector<vector<int>> , greater<vector<int>> > pq;
-        int edges = 0;
-        int ans = 0;
         
         for(int i=0;i<n-1;i++)
         {
@@ -29,6 +27,8 @@ public:
                 pq.push({dist , i , j});
             }
         }
+        
+        int edges = 0 , ans = 0;
         
         while(edges != n-1)
         {
@@ -41,12 +41,12 @@ public:
             if(p1 != p2)
             {
                 ans += temp[0];
-                parent[p1] = p2;
-                
                 edges++;
+                parent[p1] = p2;
             }
         }
         
         return ans;
+        
     }
 };
