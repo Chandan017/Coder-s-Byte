@@ -4,7 +4,7 @@ public:
         
         vector<pair<int , int>> adj[n+1];
         
-        for(auto it:times)
+        for(auto &it:times)
         {
             int u = it[0] , v = it[1] , t = it[2];
             
@@ -13,7 +13,7 @@ public:
         
         queue<int> q;
         q.push(k);
-        int maxTime = -1 , visitedNodes = 0;
+        int maxTime = -1 ;
         vector<int> time(n+1 , INT_MAX);
         time[k] = 0;
         while(!q.empty())
@@ -22,7 +22,7 @@ public:
             q.pop();
         
             int currTime = time[currNode];
-            for(auto it:adj[currNode])
+            for(auto &it:adj[currNode])
             {
                 if(time[it.first] > currTime + it.second)
                 {
@@ -37,8 +37,7 @@ public:
         {
             if(time[i]==INT_MAX)
                 return -1;
-            else
-                maxTime = max(maxTime , time[i]);
+            maxTime = max(maxTime , time[i]);
         }
         
         
