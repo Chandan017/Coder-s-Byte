@@ -11,23 +11,22 @@ public:
             adj[u].push_back({v , t});
         }
         
-        queue<pair<int , int>> q;
-        q.push({k , 0});
+        queue<int> q;
+        q.push(k);
         int maxTime = -1 , visitedNodes = 0;
         vector<int> time(n+1 , INT_MAX);
         time[k] = 0;
         while(!q.empty())
         {
-            int currNode = q.front().first;
-            int currTime = q.front().second;
+            int currNode = q.front();
             q.pop();
         
-            
+            int currTime = time[currNode];
             for(auto it:adj[currNode])
             {
                 if(time[it.first] > currTime + it.second)
                 {
-                    q.push({it.first , currTime + it.second});
+                    q.push(it.first);
                     time[it.first] = currTime + it.second;
                 }
                 
