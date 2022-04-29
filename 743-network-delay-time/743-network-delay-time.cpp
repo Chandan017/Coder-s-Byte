@@ -14,8 +14,8 @@ public:
         queue<pair<int , int>> q;
         q.push({k , 0});
         int maxTime = -1 , visitedNodes = 0;
-        vector<int> vis(n+1 , INT_MAX);
-        vis[k] = 0;
+        vector<int> time(n+1 , INT_MAX);
+        time[k] = 0;
         while(!q.empty())
         {
             int currNode = q.front().first;
@@ -25,25 +25,21 @@ public:
             
             for(auto it:adj[currNode])
             {
-                if(vis[it.first] > currTime + it.second)
+                if(time[it.first] > currTime + it.second)
                 {
                     q.push({it.first , currTime + it.second});
-                    vis[it.first] = currTime + it.second;
+                    time[it.first] = currTime + it.second;
                 }
                 
             }
         }
-        
-        for(auto it:vis)
-            cout<<it<<" ";
-        cout<<endl;
-        
+              
         for(int i=1;i<n+1;i++)
         {
-            if(vis[i]==INT_MAX)
+            if(time[i]==INT_MAX)
                 return -1;
             else
-                maxTime = max(maxTime , vis[i]);
+                maxTime = max(maxTime , time[i]);
         }
         
         
