@@ -32,7 +32,7 @@ public:
         }
         
         
-        for(auto it:guards)
+        for(auto &it:guards)
         {
             int r = it[0] , c = it[1];
             int occupied=0;
