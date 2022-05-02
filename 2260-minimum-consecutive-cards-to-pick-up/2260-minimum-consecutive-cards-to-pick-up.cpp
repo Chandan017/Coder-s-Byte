@@ -2,7 +2,8 @@ class Solution {
 public:
     int minimumCardPickup(vector<int>& cards) {
         
-        vector<int> last(1000001 , -1);
+        int maxElement = *max_element(cards.begin() , cards.end());
+        vector<int> last(maxElement+1 , -1);
         
         int n = cards.size();
         
