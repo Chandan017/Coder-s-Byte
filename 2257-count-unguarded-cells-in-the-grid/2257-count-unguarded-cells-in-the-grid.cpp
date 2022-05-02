@@ -20,21 +20,21 @@ public:
         int dy[]={0,0,-1,1};
         
         // marks walls as 1
-        for(auto it:walls)
+        for(auto &it:walls)
         {
             grid[it[0]][it[1]] = 1;
             
         }
         
         // mark guards as 2
-        for(auto it:guards)
+        for(auto &it:guards)
         {
             grid[it[0]][it[1]] = 2;
         }
         
         
         
-        for(auto it:guards)
+        for(auto &it:guards)
         {
             int r = it[0] , c = it[1];
             
