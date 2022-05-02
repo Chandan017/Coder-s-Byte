@@ -4,7 +4,7 @@ public:
     long long cnt ;
    
     
-    bool valid(int dupR , int dupC ,vector<vector<int>> &grid , int m , int n , int r , int c)
+    bool valid(int dupR , int dupC ,vector<vector<int>> &grid , int m , int n)
     {
         if(dupR>=m || dupC>=n || dupR<0 || dupC<0)
             return false;
@@ -13,6 +13,7 @@ public:
         return true;
         
     }
+    
     int countUnguarded(int m, int n, vector<vector<int>>& guards, vector<vector<int>>& walls) {
         
         vector<vector<int>> grid(m , vector<int>(n , 0));
@@ -39,7 +40,7 @@ public:
             {
                 int dupR=r+dx[ind] , dupC=c+dy[ind];
                 
-                while(valid(dupR,dupC , grid , m , n , r , c)==true)
+                while(valid(dupR,dupC , grid , m , n )==true)
                  {
                     if(grid[dupR][dupC] != -1)
                         occupied++;
