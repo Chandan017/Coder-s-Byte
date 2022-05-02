@@ -2,34 +2,29 @@ class Solution {
 public:
     int minimumCardPickup(vector<int>& cards) {
         
-        map<int,vector<int>> mpp;
-        int n = cards.size();
+        vector<int> last(1000001 , -1);
         
-        for(int i=0;i<n;i++)
-        {
-            mpp[cards[i]].push_back(i);
-        }
+        int n = cards.size();
         
         int ans = INT_MAX;
         
+        
         for(int i=0;i<n;i++)
         {
-            vector<int> &occurence = mpp[cards[i]];
-            
-            for(auto it:occurence)
+            if(last[cards[i]]  != -1)
             {
-                if(it != i)
-                {
-                    int currSize = abs(it - i) + 1;
+                int currSize = i - last[cards[i]] + 1;
                 
-                    ans = min(currSize , ans);
-                }
+                ans = min(currSize , ans);
+                cout<<currSize<<" ";
             }
             
+            last[cards[i]] = i;
         }
         
         if(ans == INT_MAX)
             ans = -1;
+        
         return ans;
         
     }
