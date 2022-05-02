@@ -17,7 +17,6 @@ public:
                 int currSize = i - last[cards[i]] + 1;
                 
                 ans = min(currSize , ans);
-                cout<<currSize<<" ";
             }
             
             last[cards[i]] = i;
