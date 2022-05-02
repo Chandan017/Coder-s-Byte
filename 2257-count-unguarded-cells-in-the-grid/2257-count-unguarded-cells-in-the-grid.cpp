@@ -1,58 +1,70 @@
 class Solution {
 public:
-
-    long long cnt ;
-   
     
-    bool valid(int dupR , int dupC ,vector<vector<int>> &grid , int m , int n)
+    bool isValid(int r , int c , vector<vector<int>> &grid , int m , int  n)
     {
-        if(dupR>=m || dupC>=n || dupR<0 || dupC<0)
+        if(r>=m || c>=n || r<0 || c<0)
             return false;
-        if(grid[dupR][dupC]==1 || grid[dupR][dupC] == 2)
+        if(grid[r][c] == 1 || grid[r][c] == 2)
             return false;
-        return true;
-        
+        else
+            return true;
     }
     
     int countUnguarded(int m, int n, vector<vector<int>>& guards, vector<vector<int>>& walls) {
         
-        vector<vector<int>> grid(m , vector<int>(n , 0));
+        vector<vector<int>> grid(m,vector<int>(n,0));
+        long long safe = m*n;
+        
         int dx[]={-1,1,0,0};
         int dy[]={0,0,-1,1};
-    
-        cnt = m*n;
-        for(int i=0;i<walls.size();i++)
+        
+        // marks walls as 1
+        for(auto it:walls)
         {
-            grid[walls[i][0]][walls[i][1]] = 1;
+            grid[it[0]][it[1]] = 1;
+            
         }
         
-        for(int i=0;i<guards.size();i++)
+        // mark guards as 2
+        for(auto it:guards)
         {
-            grid[guards[i][0]][guards[i][1]] = 2;
+            grid[it[0]][it[1]] = 2;
         }
         
         
-        for(auto &it:guards)
+        
+        for(auto it:guards)
         {
             int r = it[0] , c = it[1];
-            int occupied=0;
-            for(int ind=0;ind<4;ind++)
+            
+            int notSafe = 0;
+            
+            for(int ind = 0 ; ind < 4 ; ind++)
             {
-                int dupR=r+dx[ind] , dupC=c+dy[ind];
+                int dupR = r+dx[ind] , dupC = c+dy[ind];
                 
-                while(valid(dupR,dupC , grid , m , n )==true)
-                 {
+                while(isValid(dupR , dupC , grid , m , n))
+                {
                     if(grid[dupR][dupC] != -1)
-                        occupied++;
-                    grid[dupR][dupC]=-1;
+                        notSafe++;
+                    
+                    grid[dupR][dupC] = -1;
+                    
                     dupR += dx[ind];
                     dupC += dy[ind];
                 }
             }
-           cnt-= occupied;
+            
+            safe -= notSafe;
         }
-    
-        cnt -= guards.size();
-        return cnt-walls.size();
+        
+        // walls and guards are also not safe place so subtract it
+        
+        safe -= walls.size();
+        safe -= guards.size();
+        
+        return safe;
+        
     }
 };
