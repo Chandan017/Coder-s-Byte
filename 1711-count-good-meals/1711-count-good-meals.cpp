@@ -4,7 +4,7 @@ public:
         
         unordered_map<int,int> mpp;
         long long cnt = 0;
-        for(auto it:nums)
+        for(auto &it:nums)
         {
             for(int i = 1;i<=pow(2,21);i*=2)
             {
