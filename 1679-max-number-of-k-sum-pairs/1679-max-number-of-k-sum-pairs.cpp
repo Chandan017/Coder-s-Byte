@@ -2,25 +2,19 @@ class Solution {
 public:
     int maxOperations(vector<int>& nums, int k) {
         
-        sort(nums.begin() , nums.end());
-        
-        int start = 0 , end = nums.size()-1;
+        map<int,int> mpp;
         int cnt = 0;
-        
-        while(start < end)
+        for(auto it:nums)
         {
-            int sum = nums[start] + nums[end];
+            int res = k - it;
             
-            if(sum == k)
+            if(mpp.find(res) != mpp.end() && mpp[res] > 0)
             {
                 cnt++;
-                start++;
-                end--;
+                mpp[res]--;
             }
-            else if(sum < k)
-                start++;
             else
-                end--;
+                mpp[it]++;
         }
         
         return cnt;
