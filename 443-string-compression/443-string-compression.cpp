@@ -8,7 +8,7 @@ public:
         int times = 0;
         int cnt = 0;
         int ind = 0;
-        for(auto it:chars)
+        for(auto &it:chars)
         {
             if(it==val)
                 times++;
@@ -20,7 +20,7 @@ public:
                 if(times >1)
                 {
                    string temp = to_string(times);
-                    for(auto j:temp)
+                    for(auto &j:temp)
                     {
                         chars[ind] = j;
                         ind++;
@@ -39,7 +39,7 @@ public:
         if(times >1)
         {
             string temp = to_string(times);
-            for(auto j:temp)
+            for(auto &j:temp)
             {
                 chars[ind] = j;
                 ind++;
