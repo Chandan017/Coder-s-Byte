@@ -9,27 +9,23 @@ public:
         int times = 0;
         
         string temp = get(n-1);
-        
+        temp += '0';
         char val = temp[0];
     
         string ans = "";
+        
         for(auto it:temp)
         {
-            if(it == val)
-            {
+            if(it==val)
                 times++;
-            }
             else
             {
                 ans += (times+'0');
                 ans += val;
-                times = 1;
                 val = it;
+                times = 1;
             }
-            
         }
-        ans += (times+'0');
-        ans += val;
     
         return ans;
     }
