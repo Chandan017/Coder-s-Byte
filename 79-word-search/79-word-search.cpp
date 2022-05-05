@@ -29,13 +29,7 @@ public:
         
         return false;
     }
-    
-    
-    
-    
-    
-    
-    
+
     
     bool exist(vector<vector<char>>& board, string word) {
         
