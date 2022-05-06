@@ -4,7 +4,7 @@ public:
         
         stack<pair<char,int>> st;
         
-        for(auto it:s)
+        for(auto &it:s)
         {
             if(st.size() > 0 && st.top().first==it)
             {
