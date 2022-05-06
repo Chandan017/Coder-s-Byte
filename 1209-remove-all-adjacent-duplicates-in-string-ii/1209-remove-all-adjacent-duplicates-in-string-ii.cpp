@@ -9,24 +9,26 @@ public:
             if(st.size() > 0 && st.top().first==it)
             {
                 int times = st.top().second;
-                if(times+1 == k)
-                {
-                    while(times--)
-                        st.pop();
-                    
-                }
-                else
-                    st.push({it , times+1});
+                st.pop();
+                st.push({it , times+1});
             }
             else
                 st.push({it , 1});
+            
+            if(st.top().second == k)
+                st.pop();
         }
         
         string ans = "";
         
         while(st.size())
         {
-            ans += (st.top().first);
+            int times = st.top().second;
+            char val = st.top().first;
+            while(times--)
+            {
+                ans += val;
+            }
             st.pop();
         }
         
