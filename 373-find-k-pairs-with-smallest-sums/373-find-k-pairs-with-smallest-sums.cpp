@@ -1,32 +1,38 @@
 class Solution {
 public:
+    
+#define ppi pair<int,pair<int,int>> 
     vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k) {
         
-        priority_queue<vector<int> , vector<vector<int>> , greater<vector<int>>> pq;
+        priority_queue<ppi , vector<ppi> , greater<ppi> > pq;
         vector<vector<int>> ans;
         int n1 = nums1.size() , n2 = nums2.size();
-        pq.push({nums1[0] + nums2[0] , 0,0});
+        
         set<pair<int,int>> vis;
+        
+        pq.push({nums1[0] + nums2[0] , {0,0}});
+        
         while(pq.size() && k--)
         {
-            vector<int> temp = pq.top();
+            int i = pq.top().second.first;
+            int j = pq.top().second.second;
             pq.pop();
             
-            ans.push_back({nums1[temp[1]] , nums2[temp[2]]});
+            ans.push_back({nums1[i] , nums2[j]});
             
-            if(temp[1]+1 < n1 && vis.find({temp[1]+1 , temp[2]}) == vis.end())
+            if(i+1 < n1 && vis.find({i+1 , j}) == vis.end())
             {
-                 pq.push({nums1[temp[1]+1] + nums2[temp[2]] , temp[1]+1 , temp[2]});
-                vis.insert({temp[1]+1 , temp[2]});
+                int sum = nums1[i+1] + nums2[j];
+                pq.push({sum , {i+1 , j}});
+                vis.insert({i+1 , j});
             }
-               
             
-            if(temp[2]+1 < n2 && vis.find({temp[1] , temp[2]+1}) == vis.end())
+            if(j+1 < n2 && vis.find({i , j+1}) == vis.end())
             {
-                pq.push({nums1[temp[1]]+nums2[temp[2]+1] , temp[1] , temp[2]+1});
-                vis.insert({temp[1] , temp[2]+1});
+                int sum = nums1[i] + nums2[j+1];
+                pq.push({sum , {i , j+1}});
+                vis.insert({i ,j+1});
             }
-                
         }
         
         return ans;
