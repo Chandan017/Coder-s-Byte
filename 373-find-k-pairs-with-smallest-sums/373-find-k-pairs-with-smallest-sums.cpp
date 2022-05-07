@@ -7,7 +7,7 @@ public:
         int n1 = nums1.size() , n2 = nums2.size();
         pq.push({nums1[0] + nums2[0] , 0,0});
         set<pair<int,int>> vis;
-        while(pq.size() && k-- >0)
+        while(pq.size() && k--)
         {
             vector<int> temp = pq.top();
             pq.pop();
