@@ -2,19 +2,27 @@ class Solution {
 public:
     string reorganizeString(string s) {
         
-        map<char , int> mpp;
-        int n = s.length();
-        for(auto it:s)
-            mpp[it]++;
         
+        int freq[26]={0};
+        
+        for(auto &it:s)
+            freq[it-'a']++;
+        
+        int n = s.length();
         priority_queue<pair<int,char>> pq;
         
-        for(auto it:mpp)
+        for(int i=0;i<26;i++)
         {
-             if (it.second > (n+1)/2)
-                 return "";
-            pq.push({it.second , it.first});
+            if(freq[i]!=0)
+            {
+                if(freq[i] > (n+1)/2)
+                    return "";
+                pq.push({freq[i] , i+'a'});
+            }
         }
+        
+        
+        
         
         string ans="";
         
