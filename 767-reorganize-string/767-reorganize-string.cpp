@@ -3,7 +3,7 @@ public:
     string reorganizeString(string s) {
         
         map<char , int> mpp;
-        
+        int n = s.length();
         for(auto it:s)
             mpp[it]++;
         
@@ -11,6 +11,8 @@ public:
         
         for(auto it:mpp)
         {
+             if (it.second > (n+1)/2)
+                 return "";
             pq.push({it.second , it.first});
         }
         
@@ -38,12 +40,7 @@ public:
                 pq.push({it.first - 1 , it.second});
         }
     
-        
-        for(int i=1;i<ans.length();i++)
-        {
-            if(ans[i] == ans[i-1])
-                return "";
-        }
+       
         
         return ans;
         
