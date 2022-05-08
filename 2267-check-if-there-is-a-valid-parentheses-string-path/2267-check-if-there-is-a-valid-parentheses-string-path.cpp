@@ -3,7 +3,7 @@ public:
     
    
     int n , m;
-    int dp[101][101][300];	
+    int dp[101][101][202];	
     bool check(vector<vector<char>> &grid , int r , int c , int sum)
     {
         if(r>=n || c>=m )
