@@ -31,7 +31,6 @@ public:
         }
         
         
-        cout<<leftInd<<endl;
         
         return ans;
         
