@@ -3,31 +3,31 @@ public:
     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
         
         
-        int leftInd=0;
         int n = intervals.size();
-        for(int i=0;i<n;i++)
-        {
-            if(newInterval[0] >= intervals[i][0])
-                leftInd = i+1;
-        }
-        
-        intervals.insert(intervals.begin()+leftInd , newInterval);
-        
+        int currInd = 0;
         vector<vector<int>> ans;
         
-        ans.push_back(intervals[0]);
-        int currInd = 0;
-        for(int i=1;i<n+1;i++)
+        while(currInd < n && intervals[currInd][1] < newInterval[0])
         {
-            if(intervals[i][0] <= ans[currInd][1])
-            {
-                ans[currInd][1] = max(ans[currInd][1] , intervals[i][1]);
-            }
-            else
-            {
-                ans.push_back(intervals[i]);
-                currInd++;
-            }
+            ans.push_back(intervals[currInd]);
+            currInd++;
+        }
+        
+        while(currInd < n && intervals[currInd][0] <= newInterval[1])
+        {
+            newInterval[0] = min(intervals[currInd][0] , newInterval[0]);
+            newInterval[1] = max(intervals[currInd][1] , newInterval[1]);
+            
+            currInd++;
+        }
+        
+        
+        ans.push_back(newInterval);
+        
+        while(currInd < n)
+        {
+            ans.push_back(intervals[currInd]);
+            currInd++;
         }
         
         
