@@ -1,43 +1,36 @@
 class Solution {
 public:
-    
     vector<vector<int>> ans;
     
-    
-    void get(int k , int n , vector<int> temp , int currVal)
+    void getAll(int len, int totalVal , vector<int> &temp , int currVal)
     {
-        if(n<0 || temp.size() > k)
+        if(len<0 || totalVal<0)
             return ;
-        if(n==0 && temp.size()==k)
+        if(len==0 && totalVal==0)
         {
             ans.push_back(temp);
             return ;
         }
         
-        for(int i = currVal ; i<=9;i++)
+        for(int i=currVal;i<=9;i++)
         {
             temp.push_back(i);
-            n-=i;
-    
             
-            get(k,n,temp , i+1);
+            
+            getAll(len-1 , totalVal-i , temp , i+1);
             
             temp.pop_back();
-            n+=i;
-            
-            
             
         }
-        
         return ;
     }
-    
     vector<vector<int>> combinationSum3(int k, int n) {
         
-       
         vector<int> temp;
-        get(k,n , temp , 1);
+        
+        getAll(k,n,temp,1);
         
         return ans;
+        
     }
 };
