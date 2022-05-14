@@ -4,7 +4,7 @@ public:
         
         stack<long> st;
         
-        for(auto it:tokens)
+        for(auto &it:tokens)
         {
             if(it == "+" || it=="-" || it=="*" || it=="/")
             {
