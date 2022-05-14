@@ -6,7 +6,7 @@ public:
         
         for(auto &it:tokens)
         {
-            if(it == "+" || it=="-" || it=="*" || it=="/")
+            if(it.size()==1 && !isdigit(it[0]))
             {
                 long a = st.top();
                 st.pop();
