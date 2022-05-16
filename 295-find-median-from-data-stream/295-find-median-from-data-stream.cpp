@@ -7,78 +7,36 @@ public:
         
     }
     
-    bool sizeCheck(int smallLen  , int largeLen)
-    {
-        
-        if(abs(smallLen - largeLen) <=1)
-            return true;
-        return  false;
-    }
     
     void fixSize(int smallLen , int largeLen)
     {
-        
-        int val = small.top();
-        small.pop();
-        large.push(val);        
-        return ;
-    }
-    
-    bool valCheck(int smallLen , int largeLen)
-    {
        
-        if(smallLen==0 || largeLen==0)
-            return true;
-        
-        int smallVal = small.top();
-        int largeVal = large.top();
-        
-        if(smallVal > largeVal)
-            return false;
-        
-        return true;
-    }
-    
-    void fixVal(int smallLen , int largeLen)
-    {
-       
-        
-        if(smallLen == largeLen)
+        if(smallLen > (largeLen + 1))
         {
-            int smallVal = small.top();
+            large.push(small.top());
             small.pop();
-            large.push(smallVal);
-            
-            int largeVal = large.top();
-            large.pop();
-            small.push(largeVal);
         }
-        else
+        else if((smallLen+1) < largeLen)
         {
-            int smallVal = small.top();
-            small.pop();
-            large.push(smallVal);
-       }
-        
-        return ;
+            small.push(large.top());
+            large.pop();
+        }
     }
+    
+   
+    
     
     void addNum(int num) {
         
-        small.push(num);
-        
+        if(small.size()==0 || num <= small.top())
+            small.push(num);
+        else
+            large.push(num);
+    
         int smallLen = small.size();
         int largeLen = large.size();
         
-        if(sizeCheck(smallLen , largeLen) == false)
-            fixSize(smallLen , largeLen);
-        
-      
-         if(valCheck(smallLen , largeLen) == false)
-         {
-             fixVal(smallLen , largeLen);
-         }
- 
+        fixSize(smallLen , largeLen);
         
     }
     
