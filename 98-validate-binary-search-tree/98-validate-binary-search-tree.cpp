@@ -12,7 +12,7 @@
 class Solution {
 public:
     
-    bool check(TreeNode* root , TreeNode* minVal , TreeNode* maxVal)
+    bool check(TreeNode* &root , TreeNode* minVal , TreeNode* maxVal)
     {
         if(root==NULL)
             return true;
@@ -30,7 +30,6 @@ public:
         
         if(root==NULL)
             return true;
-        
         
         bool ans = check(root , NULL , NULL);
         
