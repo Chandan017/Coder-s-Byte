@@ -11,16 +11,7 @@ public:
     void fixSize(int smallLen , int largeLen)
     {
        
-        if(smallLen > (largeLen + 1))
-        {
-            large.push(small.top());
-            small.pop();
-        }
-        else if((smallLen+1) < largeLen)
-        {
-            small.push(large.top());
-            large.pop();
-        }
+        
     }
     
    
@@ -36,7 +27,16 @@ public:
         int smallLen = small.size();
         int largeLen = large.size();
         
-        fixSize(smallLen , largeLen);
+        if(smallLen > (largeLen + 1))
+        {
+            large.push(small.top());
+            small.pop();
+        }
+        else if((smallLen+1) < largeLen)
+        {
+            small.push(large.top());
+            large.pop();
+        }
         
     }
     
@@ -47,10 +47,8 @@ public:
         
         if(smallLen == largeLen)
         {
-            double firstVal = (double)small.top();
-            double secondVal = (double)large.top();
-            
-            double ans = (firstVal + secondVal) / 2.00;
+        
+            double ans = (small.top() + large.top()) / 2.00;
             return ans;
         }
         else
