@@ -53,13 +53,10 @@ public:
         }
         else
         {
-            double ans;
             if(smallLen > largeLen)
-                ans = (double)small.top();
+                return small.top();
             else
-                ans = (double)large.top();
-            
-            return ans;
+                return large.top();
         }
         
     }
