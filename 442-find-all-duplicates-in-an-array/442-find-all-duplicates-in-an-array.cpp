@@ -4,7 +4,7 @@ public:
         
         vector<int> ans;
         
-        for(auto it:nums)
+        for(auto &it:nums)
         {
             int val = abs(it);
             
