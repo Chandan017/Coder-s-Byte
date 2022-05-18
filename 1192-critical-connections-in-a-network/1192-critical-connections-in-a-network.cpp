@@ -8,7 +8,6 @@ public:
     {
      
         low[node] = time[node] = timer++;
-        timer++;
         vis[node] = true;
         
         for(auto &it:adj[node])
