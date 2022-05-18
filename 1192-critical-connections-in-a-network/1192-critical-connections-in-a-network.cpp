@@ -11,7 +11,7 @@ public:
         timer++;
         vis[node] = true;
         
-        for(auto it:adj[node])
+        for(auto &it:adj[node])
         {
             if(it==parent)
                 continue;
@@ -34,7 +34,7 @@ public:
         
         vector<vector<int>> adj(n);
         
-        for(auto it:connections)
+        for(auto &it:connections)
         {
             adj[it[0]].push_back(it[1]);
             adj[it[1]].push_back(it[0]);
