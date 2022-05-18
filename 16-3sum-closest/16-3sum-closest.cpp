@@ -8,12 +8,13 @@ public:
         
         int closest = nums[0] + nums[1] + nums[2];
         
-        for(int i=0;i<n-2;i++)
+        for(int first=0;first<n-2;first++)
         {
             
-            int first = i;
-            
-            int second = i+1 , third = n-1;
+            if(first>0 && nums[first]==nums[first-1])
+                continue;
+                        
+            int second = first+1 , third = n-1;
             
             while(second<third)
             {
