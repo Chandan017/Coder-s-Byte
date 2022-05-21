@@ -1,43 +1,42 @@
 class Solution {
 public:
-    int dp[10001][13];
-    int get(vector<int> &coins , int n , int amount)
+    
+    int solve(vector<int> &coins , int amount , int n , vector<vector<int>> &dp)
     {
-        if(amount == 0)
+        if(amount==0)
             return 0;
         
         if(n==0)
-            return INT_MAX -1;
+            return INT_MAX-1;
         
-        if(dp[amount][n])
+        int cnt ;
+        
+        if(dp[amount][n] != -1)
             return dp[amount][n];
         
-        int cnt;
         if(coins[n-1] > amount)
-            cnt = get(coins , n-1 , amount);
-        
+            return dp[amount][n] = solve(coins , amount , n-1 , dp);
         else
         {
-            int takeIt = 1 + get(coins , n , amount - coins[n-1]);
-            int notTakeIt = get(coins , n-1 , amount);
+            int takeIt = 1 + solve(coins , amount-coins[n-1] , n , dp);
+            int notTakeIt = solve(coins , amount , n-1 , dp);
             
             cnt = min(takeIt , notTakeIt);
         }
         
         return dp[amount][n] = cnt;
-        
     }
-    
     int coinChange(vector<int>& coins, int amount) {
         
         int n = coins.size();
+        vector<vector<int>> dp(amount+1 , vector<int>(n+1 , -1));
+        int cnt = solve(coins , amount , n , dp);
         
-        int ans = get(coins , n , amount);
+        if(cnt == INT_MAX - 1)
+            cnt = -1;
+       
         
-        if(ans == INT_MAX -1)
-            ans = -1;
-        
-        return ans;
+        return cnt;
         
     }
 };
