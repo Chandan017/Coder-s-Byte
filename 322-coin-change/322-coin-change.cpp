@@ -11,7 +11,7 @@ public:
         
         int cnt ;
         
-        if(dp[amount][n] != -1)
+        if(dp[amount][n])
             return dp[amount][n];
         
         if(coins[n-1] > amount)
@@ -29,7 +29,7 @@ public:
     int coinChange(vector<int>& coins, int amount) {
         
         int n = coins.size();
-        vector<vector<int>> dp(amount+1 , vector<int>(n+1 , -1));
+        vector<vector<int>> dp(amount+1 , vector<int>(n+1));
         int cnt = solve(coins , amount , n , dp);
         
         if(cnt == INT_MAX - 1)
