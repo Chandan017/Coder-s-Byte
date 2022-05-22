@@ -23,6 +23,9 @@ public:
                     int currLen = j-i+1;
                     
                     maxLen = max(maxLen , currLen);
+                    
+                    if(maxLen > n-i+1)
+                        return maxLen;
                 }
             }
         }
