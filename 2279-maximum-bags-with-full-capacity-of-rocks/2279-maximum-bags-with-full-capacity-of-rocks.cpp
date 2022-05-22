@@ -16,22 +16,11 @@ public:
             int curr = pq.top();
             pq.pop();
             
-            if(curr==0)
-            {
-                cnt++;
-                continue;
-            }
-            else if(curr <= additionalRocks)
-            {
-                
-                additionalRocks -= curr;
-                
-                cnt++;
-                continue;
-            }
+           if(curr > additionalRocks )
+               break;
             
-            else break;
-                
+            cnt++;
+            additionalRocks -= curr;
         }
         
         return cnt;
