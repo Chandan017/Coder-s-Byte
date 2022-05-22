@@ -2,27 +2,23 @@ class Solution {
 public:
     int maximumBags(vector<int>& capacity, vector<int>& rocks, int additionalRocks) {
         
-        priority_queue<int,vector<int> , greater<int>> pq;
         
         for(int i=0;i<rocks.size();i++)
         {
-            pq.push(capacity[i] - rocks[i]);
+            capacity[i] -= rocks[i];
         }
         
         int cnt =0;
+        sort(capacity.begin() , capacity.end());
         
-        while(additionalRocks > 0 && pq.size() > 0)
+        for(int i=0;i<capacity.size();i++)
         {
-            int curr = pq.top();
-            pq.pop();
-            
-           if(curr > additionalRocks )
-               break;
-            
-            cnt++;
-            additionalRocks -= curr;
+            if(capacity[i] <= additionalRocks)
+            {
+                additionalRocks -= capacity[i];
+                cnt++;
+            }
         }
-        
         return cnt;
     }
 };
