@@ -24,7 +24,10 @@ public:
                 high = mid-1;
         }
         
-        low = 0 , high = n-1;
+        low = firstPos , high = n-1;
+        
+        if(low==-1)
+            low = 0;
         
         while(low <= high)
         {
