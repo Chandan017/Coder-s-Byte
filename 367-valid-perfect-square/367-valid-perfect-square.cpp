@@ -5,10 +5,19 @@ public:
         if(num==1)
             return true;
         
-        for(long i=2;i*i<=num;i++)
+        long low = 2 , high = num;
+        
+        while(low<=high)
         {
-            if(i*i==num)
+            long mid = (low+high)/2;
+            
+            if(mid*mid == num)
                 return true;
+            
+            else if(mid*mid < num)
+                low = mid+1;
+            else
+                high = mid-1;
         }
         
         
