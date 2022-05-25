@@ -4,14 +4,21 @@ public:
         
         char ans='1';
         
-        for(auto it:letters)
+        int low = 0 , high = letters.size()-1;
+        
+        while(low <=high)
         {
-            if(it>target)
+            int mid = (low+high)/2;
+            
+            if(letters[mid] > target)
             {
-                ans = it;
-                break;
+                ans = letters[mid];
+                high = mid-1;
             }
+            else 
+                low = mid+1;
         }
+        
         
         if(ans=='1')
             ans = letters[0];
