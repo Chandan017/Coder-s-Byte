@@ -6,9 +6,9 @@ public:
         
         int cnt = 0;
         
-        map<long,long> mpp;
+        unordered_map<long,long> mpp;
         mpp[0]=1;
-        long long sum = 0;
+        long sum = 0;
         
         for(int i=0;i<n;i++)
         {
