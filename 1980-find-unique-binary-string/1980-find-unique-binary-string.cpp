@@ -13,6 +13,8 @@ public:
         
         while(n--)
             res += '0';
+        
+        n = nums[0].length();
         int cnt = 0;
         int ind = 0;
         while(true)
