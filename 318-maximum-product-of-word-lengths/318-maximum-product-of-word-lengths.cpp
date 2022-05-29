@@ -5,7 +5,7 @@ public:
     {
         int res = 0;
         
-        for(auto it:word)
+        for(auto &it:word)
         {
             int num = it-'a';
             num = 1<<num;
