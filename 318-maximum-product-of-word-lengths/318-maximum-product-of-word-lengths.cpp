@@ -19,15 +19,20 @@ public:
         
         int maxLen = 0;
         int n = words.size();
+        vector<int> mask;
+        
+        for(auto &it:words)
+        {
+            int currMask = get(it);
+            mask.push_back(currMask);
+        }
         
         for(int i=0;i<n-1;i++)
         {
-            int firstWord = get(words[i]);
     
             for(int j=i+1;j<n;j++)
             {
-                int secondWord = get(words[j]);
-                int res = firstWord & secondWord;
+                int res = mask[i] & mask[j];
                 if(res == 0)
                 {
                     int firstLen = words[i].length();
