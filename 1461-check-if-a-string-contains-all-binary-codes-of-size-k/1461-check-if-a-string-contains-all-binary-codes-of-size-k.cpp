@@ -2,12 +2,12 @@ class Solution {
 public:
     bool hasAllCodes(string s, int k) {
         
-        set<string> vis;
+        unordered_set<string> vis;
         int totalCombinations = pow(2,k);
         
         string window = "";
         
-        for(auto it:s)
+        for(auto &it:s)
         {
             if(window.size() < k -1)
                 window += it;
