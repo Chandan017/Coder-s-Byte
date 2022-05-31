@@ -2,30 +2,28 @@ class Solution {
 public:
     bool hasAllCodes(string s, int k) {
         
-        unordered_set<string> vis;
-        int totalCombinations = pow(2,k);
+        int totalCombinations = 1<<k;
+        int allOne = totalCombinations - 1;
+        vector<bool> got(totalCombinations , false);
         
-        string window = "";
-        
-        for(auto &it:s)
+        int hashVal = 0;
+        for(int i=0;i<s.length();i++)
         {
-            if(window.size() < k -1)
-                window += it;
-            else
+            hashVal = (hashVal << 1) & allOne;
+            hashVal = hashVal | (s[i]-'0');
+            
+            if(i >= k-1 && !got[hashVal])
             {
-                window += it;
+                got[hashVal] = true;
+                totalCombinations--;
                 
-                vis.insert(window);
-                
-                window.erase(window.begin());
             }
+            
+            if(totalCombinations == 0)
+                return true;
         }
         
-        if(vis.size()==totalCombinations)
-            return true;
-        else
-            return false;
-            
+        return false;
         
     }
 };
