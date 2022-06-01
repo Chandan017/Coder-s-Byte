@@ -37,7 +37,7 @@ public:
             tree += ',';
             
         }
-        cout<<tree<<endl;
+    
         return tree;
         
     }
