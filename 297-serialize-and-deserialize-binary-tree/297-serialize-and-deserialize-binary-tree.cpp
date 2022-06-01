@@ -13,47 +13,46 @@ public:
     // Encodes a tree to a single string.
     string serialize(TreeNode* root) {
         
-        string tree = "";
         if(root==NULL)
             return "";
-        
+        string tree ="";
         queue<TreeNode*> q;
         q.push(root);
         
         while(q.size())
         {
-            root = q.front();
+            TreeNode* node = q.front();
             q.pop();
-            if(root)
+            
+            if(node)
             {
-                q.push(root->left);
-                q.push(root->right);
+                q.push(node->left);
+                q.push(node->right);
+                
+                tree += to_string(node->val);
             }
-            
-            if(root==NULL)
-                tree += '#';
             else
-                tree += to_string(root->val);
+                tree += '#';
             
-            tree+=',' ;
+            tree += ',';
+            
         }
         
-        cout<<tree<<endl;
-        
         return tree;
+        
     }
 
     // Decodes your encoded data to tree.
     TreeNode* deserialize(string data) {
-    
-        if(data.length()==0)
+        
+        if(data.size()==0)
             return NULL;
         
         stringstream s(data);
         string str;
-        
         getline(s , str , ',');
         TreeNode* root = new TreeNode(stoi(str));
+        
         queue<TreeNode*> q;
         q.push(root);
         
@@ -63,7 +62,6 @@ public:
             q.pop();
             
             getline(s , str , ',');
-            
             if(str=="#")
                 node->left = NULL;
             else
@@ -74,7 +72,6 @@ public:
             }
             
             getline(s , str , ',');
-            
             if(str=="#")
                 node->right = NULL;
             else
@@ -83,7 +80,6 @@ public:
                 node->right = rightNode;
                 q.push(rightNode);
             }
-                
         }
         
         return root;
