@@ -37,7 +37,7 @@ public:
             tree += ',';
             
         }
-        
+        cout<<tree<<endl;
         return tree;
         
     }
@@ -49,10 +49,11 @@ public:
             return NULL;
         
         stringstream s(data);
-        string str;
-        getline(s , str , ',');
-        TreeNode* root = new TreeNode(stoi(str));
         
+        string str ;
+        getline(s , str , ',');
+        
+        TreeNode* root = new TreeNode(stoi(str));
         queue<TreeNode*> q;
         q.push(root);
         
@@ -72,6 +73,7 @@ public:
             }
             
             getline(s , str , ',');
+            
             if(str=="#")
                 node->right = NULL;
             else
