@@ -11,36 +11,40 @@
  */
 class Solution {
 public:
-    int n=0;;
+    int n = 0;
+    
     int getAverage(TreeNode* root)
     {
         if(root==NULL)
             return 0;
         
-        int sum = root->val;
         n++;
-        
+        int sum = root->val;
         sum += getAverage(root->left);
         sum += getAverage(root->right);
         
         return sum;
-        
     }
+    
+    
+    
+    
     int averageOfSubtree(TreeNode* root) {
         
         if(root==NULL)
             return 0;
         
-        n=0;
-        int ans = 0;
-        int curr = getAverage(root);
-        if(curr/n == root->val)
-            ans++;
+        n = 0;
+        int average = getAverage(root);
         
-        ans += averageOfSubtree(root->left);
-        ans +=averageOfSubtree(root->right);
+        int cnt = 0;
+        if(average/n == root->val)
+            cnt++;
         
-        return ans;
+        cnt += averageOfSubtree(root->left);
+        cnt += averageOfSubtree(root->right);
+        
+        return cnt;
         
     }
 };
