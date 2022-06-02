@@ -4,14 +4,13 @@ public:
         
         
         int n = matrix.size() , m = matrix[0].size();
-        vector<vector<int>> ans(m);
+        vector<vector<int>> ans(m,vector<int>(n));
         
-        for(int col=0;col<m;col++)
+        for(int r=0;r<n;r++)
         {
-            for(int row=0;row<n;row++)
+            for(int c=0;c<m;c++)
             {
-                // row becomes col and col becomes row when we take transpose;
-                ans[col].push_back(matrix[row][col]);
+                ans[c][r] = matrix[r][c];
             }
         }
         
