@@ -2,53 +2,59 @@ class Solution {
 public:
     void gameOfLife(vector<vector<int>>& board) {
         
-        int n = board.size();
-        int m = board[0].size();
+        int n=board.size();
+        int m=board[0].size();
         
-        vector<vector<int>> ans(n , vector<int>(m));
+        vector<vector<int>> ans(n,vector<int>(m));
         
-        int dx[8] = {-1,1,0,0,-1,-1,1,1};
-        int dy[8] = {0,0,-1,1,-1,1,-1,1};
+        int dx[8]={-1,1,0,0,-1,-1,1,1};
+        int dy[8]={0,0,-1,1,-1,1,-1,1};
         
-        for(int i=0;i<n;i++)
+        for(int r=0;r<n;r++)
         {
-            for(int j=0;j<m;j++)
+            for(int c=0;c<m;c++)
             {
                 int liveCnt = 0;
                 
-                for(int ind = 0;ind < 8;ind++)
+                for(int ind=0;ind<8;ind++)
                 {
-                    int newX = i + dx[ind];
-                    int newY = j + dy[ind];
+                    int newR = r + dx[ind];
+                    int newC = c + dy[ind];
                     
-                    if(newX>=0 && newY>=0 && newX<n && newY<m && board[newX][newY]==1)
-                        liveCnt++;                        
+                    if(newR>=0 && newC>=0 && newR<n && newC<m && board[newR][newC]==1)
+                        liveCnt++;
                 }
                 
-                if(board[i][j]==1)
+                if(board[r][c]==1)
                 {
-                    if(liveCnt == 2 || liveCnt ==3)
-                        ans[i][j] = 1;
+                    if(liveCnt==2 || liveCnt==3)
+                        ans[r][c] = 1;
                     else
-                        ans[i][j] = 0;
+                        ans[r][c] = 0;
                 }
                 else
                 {
-                    if(liveCnt == 3)
-                        ans[i][j] = 1;
+                    if(liveCnt==3)
+                        ans[r][c] = 1;
                     else
-                        ans[i][j] = 0;
+                        ans[r][c] = 0;
                 }
             }
         }
         
-        for(int i=0;i<n;i++)
+        
+        
+        
+        
+        
+        for(int r=0;r<n;r++)
         {
-            for(int j=0;j<m;j++)
-                board[i][j] = ans[i][j];
+            for(int c=0;c<m;c++)
+                board[r][c] = ans[r][c];
         }
         
         return ;
+        
         
     }
 };
