@@ -6,11 +6,12 @@ public:
         int n = matrix.size() , m = matrix[0].size();
         vector<vector<int>> ans(m);
         
-        for(int i=0;i<m;i++)
+        for(int col=0;col<m;col++)
         {
-            for(int j=0;j<n;j++)
+            for(int row=0;row<n;row++)
             {
-                ans[i].push_back(matrix[j][i]);
+                // row becomes col and col becomes row when we take transpose;
+                ans[col].push_back(matrix[row][col]);
             }
         }
         
