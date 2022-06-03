@@ -18,10 +18,7 @@ public:
     }
     
     int sumRegion(int row1, int col1, int row2, int col2) {
-        
-        int row1End = row1 , col1End = col2;
-        int row2Start = row2 , col2Start = col1;
-        
+                
         long long sum = 0;
         
        for(int row = row1;row<=row2;row++)
