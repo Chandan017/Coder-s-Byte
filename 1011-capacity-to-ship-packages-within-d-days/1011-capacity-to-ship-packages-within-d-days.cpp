@@ -12,8 +12,7 @@ public:
                 total +=nums[i];
             else
             {
-                
-                    currDays++;
+                currDays++;
                 total = nums[i];
             }
             if(currDays > days || nums[i] > maxAllowed)
@@ -29,12 +28,11 @@ public:
         int low = *max_element(nums.begin() , nums.end());
         int high = accumulate(nums.begin() , nums.end(),0);
                 
-        int maxMin = high;
+        int maxMin;
         
         while(low<=high)
         {
             int mid = (low+high)/2;
-            cout<<mid<<" ";
             bool isPossible = solve(nums , mid , days);
             
             if(isPossible==true)
