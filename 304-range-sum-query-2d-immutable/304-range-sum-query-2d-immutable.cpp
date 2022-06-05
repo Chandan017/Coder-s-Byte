@@ -5,15 +5,16 @@ public:
     
     NumMatrix(vector<vector<int>>& matrix) {
         
-        for(auto &it:matrix)
+        int n = matrix.size() , m = matrix[0].size();
+        for(int i=0;i<n;i++)
         {
-            vector<int> eachRow;
+            vector<int> eachRow(m);
             int sum = 0;
             
-            for(auto &j:it)
+            for(int j=0;j<m;j++)
             {
-                sum += j;
-                eachRow.push_back(sum);
+                sum += matrix[i][j];
+                eachRow[j] = sum;
             }
             
             grid.push_back(eachRow);
