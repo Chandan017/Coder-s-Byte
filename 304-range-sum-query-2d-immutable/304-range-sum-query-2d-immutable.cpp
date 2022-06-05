@@ -1,37 +1,41 @@
 class NumMatrix {
 public:
-    vector<vector<long>> grid;
+    
+    vector<vector<int>> grid;
+    
     NumMatrix(vector<vector<int>>& matrix) {
         
         for(auto &it:matrix)
         {
-            vector<long> temp;
-            long sum = 0;
+            vector<int> eachRow;
+            int sum = 0;
+            
             for(auto &j:it)
             {
                 sum += j;
-                temp.push_back(sum);
+                eachRow.push_back(sum);
             }
-            grid.push_back(temp);
+            
+            grid.push_back(eachRow);
         }
         
     }
     
     int sumRegion(int row1, int col1, int row2, int col2) {
-                
-        long long sum = 0;
         
-       for(int row = row1;row<=row2;row++)
-       {
-           sum += grid[row][col2];
-           if(col1 !=0)
-               sum -= grid[row][col1-1];
-       }
+        int sum = 0;
         
+        for(int r=row1;r<=row2;r++)
+        {
+            int currLevelSum = grid[r][col2];
+            if(col1 != 0)
+                currLevelSum -= grid[r][col1-1];
+            
+            sum += currLevelSum;
+        }
         
         
         return sum;
-        
     }
 };
 
