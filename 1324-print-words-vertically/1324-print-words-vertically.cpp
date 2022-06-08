@@ -20,7 +20,7 @@ public:
         
         vector<string> dict;
         string temp = "";
-        for(auto it:s)
+        for(auto &it:s)
         {
             if(it==' ')
             {
