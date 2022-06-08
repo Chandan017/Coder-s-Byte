@@ -1,26 +1,25 @@
 class Bank {
-public:
-    
+private:
     int n;
     vector<long long> bal;
+public:
+    
     Bank(vector<long long>& balance) {
         
         n = balance.size();
-        
         bal = balance;
         
     }
     
     bool transfer(int account1, int account2, long long money) {
         
-        if(account1> n || account2>n || bal[account1-1] < money)
+        if(account1 > n || account2 > n || bal[account1-1] < money)
             return false;
         
+        withdraw(account1 , money);
         deposit(account2 , money);
-        withdraw(account1,money);
         
-        return true;
-        
+        return true;      
     }
     
     bool deposit(int account, long long money) {
@@ -29,18 +28,16 @@ public:
             return false;
         
         bal[account-1] += money;
-        
         return true;
         
     }
     
     bool withdraw(int account, long long money) {
         
-        if(account > n  || bal[account-1] < money)
+        if(account > n || bal[account-1] < money)
             return false;
         
-        bal[account - 1] -= money;
-        
+        bal[account-1] -= money;
         return true;
         
     }
