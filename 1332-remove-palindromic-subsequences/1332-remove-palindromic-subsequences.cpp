@@ -7,6 +7,7 @@ public:
         
         if(temp == s)
             return 1;
+        
         return 2;
         
     }
