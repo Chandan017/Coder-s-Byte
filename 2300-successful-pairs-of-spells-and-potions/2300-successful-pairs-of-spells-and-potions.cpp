@@ -6,7 +6,7 @@ public:
         int m = potions.size();
         vector<int> ans;
         
-        for(auto &s:spells)
+        for(auto s:spells)
         {
             int l = 0 , r = m-1;
             int res = m;
