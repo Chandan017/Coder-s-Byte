@@ -4,8 +4,6 @@ public:
     int cnt = 0;
     int minPathSum(vector<vector<int>> &triangle , int r , int c , vector<vector<int>> &dp)
     {
-        if(r>=n || c>r)
-            return INT_MAX;
         
         if(dp[r][c] != INT_MAX)
             return dp[r][c];
