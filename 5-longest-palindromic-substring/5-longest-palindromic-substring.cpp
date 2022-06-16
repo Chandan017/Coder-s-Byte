@@ -1,20 +1,6 @@
 class Solution {
 public:
-    bool check(string &s)
-    {
-        int l = 0 , h = s.length()-1;
         
-        while(l<h)
-        {
-            if(s[l]!=s[h])
-                return false;
-            l++;
-            h--;
-        }
-        
-        return true;
-    }
-    
     string longestPalindrome(string s) {
         
         int n = s.length();
@@ -30,7 +16,21 @@ public:
                 
                 if(temp.length() > res.length())
                 {
-                    if(check(temp))
+                    int l = 0 , h = temp.length()-1;
+                    bool flag = true;
+                    
+                    while(l<h)
+                    {
+                        if(temp[l] != temp[h])
+                        {
+                            flag = false;
+                            break;
+                        }
+                        l++;
+                        h--;
+                    }
+                    
+                    if(flag)
                         res = temp;
                 }
             }
