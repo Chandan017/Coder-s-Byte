@@ -1,7 +1,7 @@
 class WordFilter {
 public:
     
-    map<string,int> mpp;
+    unordered_map<string,int> mpp;
     
     WordFilter(vector<string>& words) {
         
@@ -21,7 +21,7 @@ public:
                 {
                     string suff = word.substr(k,wordLen);
                     
-                    mpp[pre + "," + suff] = i+1;
+                    mpp[pre + "/" + suff] = i+1;
                 }
             }
         }
@@ -30,8 +30,8 @@ public:
     
     int f(string prefix, string suffix) {
         
-        string word = prefix + "," + suffix;
-        return mpp[word] - 1;
+        string word = prefix + "/" + suffix;
+        return mpp[word]-1;
         
     }
 };
