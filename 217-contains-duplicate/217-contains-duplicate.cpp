@@ -2,17 +2,17 @@ class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
         
-        map<int,int> mpp;
+        set<int> st;
         
         for(auto it:nums)
-            mpp[it]++;
+        {
+            if(st.find(it) != st.end())
+                return true;
+            else
+                st.insert(it);
+        }
         
-        int n = nums.size();
-        
-        if(mpp.size()==n)
-            return false;
-        else
-            return true;
+       return false;
         
     }
 };
