@@ -2,7 +2,7 @@ class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
         
-        set<int> st;
+        unordered_set<int> st;
         
         for(auto it:nums)
         {
