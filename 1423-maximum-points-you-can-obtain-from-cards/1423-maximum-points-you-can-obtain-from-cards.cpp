@@ -24,15 +24,11 @@ public:
         
         int i=0,j=n;
         
-        while(i<=n)
+        while(k-i>=0)
         {
-            if(k-i<0)
-                break;
             int firstPart = k-i;
             int secondPart = k-firstPart;
-            int curr = prefix[firstPart];
-            cout<<firstPart<<"->"<<prefix[firstPart]<<" "<<secondPart<<"->"<<suffix[secondPart]<<endl;
-                        
+            int curr = prefix[firstPart];                       
 
             i++;
             if(secondPart >n)
