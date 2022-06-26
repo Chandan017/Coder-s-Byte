@@ -22,7 +22,7 @@ public:
         
         int maxPoints = 0;
         
-        int i=0,j=n;
+        int i=0;
         
         while(k-i>=0)
         {
@@ -39,9 +39,7 @@ public:
             maxPoints = max(maxPoints ,curr);
             
             
-        }
-        cout<<endl;
-        
+        }        
         return maxPoints;
         
     }
