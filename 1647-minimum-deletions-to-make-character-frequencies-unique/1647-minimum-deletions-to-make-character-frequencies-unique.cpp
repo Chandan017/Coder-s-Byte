@@ -7,8 +7,6 @@ public:
         for(auto it:s)
             freq[it-'a']++;
         
-        sort(freq.begin() , freq.end());
-        
         set<int> st;
         
         int del = 0;
