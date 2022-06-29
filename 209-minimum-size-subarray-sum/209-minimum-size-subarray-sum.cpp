@@ -28,18 +28,7 @@ public:
             }
             
             
-        }
-        cout<<minLen<<"->"<<j<<endl;
-        
-        while(currSum >= target && j<n)
-        {
-            int currLen = n-j;
-            minLen = min(minLen , currLen);
-            currSum -= nums[j];
-            j++;
-            
-        }
-        
+        }        
         
         if(minLen == n+1)
             return 0;
