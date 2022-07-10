@@ -1,25 +1,27 @@
 class Solution {
 public:
-    int dp[1001];
-    int get(vector<int> &cost , int ind , int n)
+    int dp[10001];
+    int solve(vector<int> &cost , int ind , int n)
     {
-        if(ind >=n)
+        if(ind>=n)
             return 0;
         
         if(dp[ind])
             return dp[ind];
         
-        int takeIt = cost[ind] + min( get(cost , ind+1 , n ) , get(cost , ind+2 , n));
+        int oneStep = cost[ind] + solve(cost , ind+1 , n);
+        int twoStep = cost[ind] + solve(cost , ind+2 , n);
         
-        return dp[ind] = takeIt;
+        return dp[ind] =  min(oneStep , twoStep);
     }
     int minCostClimbingStairs(vector<int>& cost) {
-     
-        int n=cost.size();
         
-        int zeroIndex = get(cost , 0 , n);
-        int oneIndex = get(cost , 1 , n);
+        int n = cost.size();
         
-        return min(zeroIndex , oneIndex);
+        int zeroInd = solve(cost , 0 , n);
+        int oneInd = solve(cost ,1 , n);
+        
+        return min(oneInd , zeroInd);
+        
     }
 };
