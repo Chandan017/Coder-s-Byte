@@ -8,11 +8,12 @@ public:
         {
             if(st.find(it) != st.end())
                 return true;
-            else
-                st.insert(it);
+            
+            st.insert(it);
         }
         
-       return false;
+        
+        return false;
         
     }
 };
