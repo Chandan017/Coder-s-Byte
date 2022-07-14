@@ -15,7 +15,7 @@ public:
         
         int bucket1 = 0 , bucket2=0;
        
-        for(auto it:nums)
+        for(auto &it:nums)
         {
             
             if((mask&it) == 0)
