@@ -21,7 +21,7 @@ public:
         int l = helper(root->left);
         int r = helper(root->right);
         
-        maxi = max(maxi , (1+ l + r));
+        maxi = max(maxi , (l + r));
         
         return 1 + max(l,r);
     }
@@ -29,7 +29,7 @@ public:
         
         helper(root);
         
-        return maxi-1;
+        return maxi;
         
     }
 };
