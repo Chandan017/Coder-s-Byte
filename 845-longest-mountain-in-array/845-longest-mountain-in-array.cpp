@@ -7,7 +7,7 @@ public:
         if(n<3)
             return 0;
         
-        int currLen = 0 , maxiLen = 0;
+        int maxiLen = 0;
         int i = 0;
         
         while(i<n)
