@@ -12,28 +12,24 @@
 class Solution {
 public:
     
-    bool check(TreeNode* &root , TreeNode* minVal , TreeNode* maxVal)
+    bool helper(TreeNode* root , TreeNode* mini , TreeNode* maxi)
     {
-        if(root==NULL)
+        if(!root)
             return true;
-        
-        if((minVal != NULL && root->val <= minVal->val) || (maxVal != NULL && root->val >= maxVal->val))
+        if((mini && root->val <= mini->val) || (maxi && root->val >= maxi->val))
             return false;
-        
-        bool leftCheck = check(root->left , minVal , root);
-        bool rightCheck = check(root->right , root , maxVal);
-        
-        return (leftCheck && rightCheck);
+
+        bool l = helper(root->left , mini , root);
+        bool r = helper(root->right , root , maxi);
+
+        return (l&&r);
     }
+    
     
     bool isValidBST(TreeNode* root) {
         
-        if(root==NULL)
-            return true;
         
-        bool ans = check(root , NULL , NULL);
-        
-        return ans;
+        return helper(root , NULL , NULL);
         
     }
 };
