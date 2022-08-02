@@ -12,24 +12,16 @@
 class Solution {
 public:
     
-    bool helper(TreeNode* root , TreeNode* mini , TreeNode* maxi)
-    {
-        if(!root)
+  
+    bool isValidBST(TreeNode* root , long mini=LONG_MIN , long maxi = LONG_MAX) {
+        
+        
+       if(!root)
             return true;
-        if((mini && root->val <= mini->val) || (maxi && root->val >= maxi->val))
+        if((root->val <= mini) || (root->val >= maxi))
             return false;
 
-        bool l = helper(root->left , mini , root);
-        bool r = helper(root->right , root , maxi);
-
-        return (l&&r);
-    }
-    
-    
-    bool isValidBST(TreeNode* root) {
-        
-        
-        return helper(root , NULL , NULL);
+        return  isValidBST(root->left , mini , root->val) && isValidBST(root->right , root->val , maxi);
         
     }
 };
