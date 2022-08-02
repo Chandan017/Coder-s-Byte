@@ -1,17 +1,8 @@
 class Solution {
 public:
     
-    bool isNice(string &t)
+    bool isNice(int smallCase[] , int capitalCase[])
     {
-        int smallCase[26] = {0}  , capitalCase[26] = {0};
-        
-        for(auto it:t)
-        {
-            if(islower(it))
-                smallCase[it-'a']++;
-            else
-                capitalCase[it-'A']++;
-        }
         
         for(int i=0;i<26;i++)
         {
@@ -32,12 +23,17 @@ public:
         for(int i=0;i<n;i++)
         {
             string temp = "";
+            int smallCase[26] = {0}  , capitalCase[26] = {0};
             
             for(int j=i;j<n;j++)
             {
                 temp += s[j];
+                if(islower(s[j]))
+                    smallCase[s[j]-'a']++;
+                else
+                    capitalCase[s[j]-'A']++;
                 
-                if(isNice(temp) && temp.length() > res.length() )
+                if(isNice(smallCase , capitalCase) && temp.length() > res.length() )
                     res = temp;
             }
         }
