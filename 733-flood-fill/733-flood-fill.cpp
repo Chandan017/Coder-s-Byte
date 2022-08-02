@@ -1,42 +1,34 @@
 class Solution {
 public:
-    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
+    
+    int n , m;
+    
+    void helper(vector<vector<int>> &grid , int r , int c , int oldColor , int newColor)
+    {
+        if(r<0 || c<0 || r>=n || c>=m || grid[r][c] != oldColor)
+            return ;
         
-        int n = image.size();
-        int m = image[0].size();
+        grid[r][c] = newColor;
         
-        int dx[]={-1,1,0,0};
-        int dy[] = {0,0,-1,1};
+        helper(grid , r+1 , c , oldColor , newColor);
+        helper(grid , r-1 , c , oldColor , newColor);
+        helper(grid , r , c+1 , oldColor , newColor);
+        helper(grid ,r , c-1 , oldColor , newColor);
         
-        queue<pair<int,int>> q;
-        q.push({sr,sc});
+        return ;
+        
+    }
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+        
+        n = image.size() , m = image[0].size();
+        
         int oldColor = image[sr][sc];
-        image[sr][sc] = newColor;
         
-        if(newColor ==  oldColor)
-            return image;
+        if(oldColor != color)
+            helper(image , sr , sc, oldColor , color);
         
-        while(q.size())
-        {
-            int x = q.front().first;
-            int  y = q.front().second;
-            q.pop();
-            
-            for(int  ind = 0;ind<4;ind++)
-            {
-                int  newR =  x + dx[ind];
-                int newC = y +  dy[ind];
-                
-                if(newR>=0 && newC>=0  && newR<n  && newC<m && image[newR][newC]== oldColor)
-                {
-                    q.push({newR,newC});
-                    image[newR][newC] = newColor;
-                }
-            }
-        }
+        return image;
         
-        return  image;
-
         
     }
 };
