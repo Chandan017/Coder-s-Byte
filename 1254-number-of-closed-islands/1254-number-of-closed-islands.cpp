@@ -23,21 +23,13 @@ public:
         
         for(int i=0;i<n;i++)
         {
-            if(grid[i][0] == 0)
-                fill(grid , i , 0);
-            if(grid[i][m-1] == 0)
-                fill(grid , i , m-1);
+            for(int j=0;j<m;j++)
+            {
+                if(i==0 || i==n-1 || j==0 || j==m-1)
+                    fill(grid , i , j);
+            }
         }
         
-        
-        for(int j=0;j<m;j++)
-        {
-            if(grid[0][j] == 0)
-                fill(grid , 0 , j);
-            
-            if(grid[n-1][j] == 0)
-                fill(grid , n-1 , j);
-        }
         
         int cnt = 0;
         
