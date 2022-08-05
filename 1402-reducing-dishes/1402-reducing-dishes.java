@@ -1,25 +1,39 @@
 class Solution {
-    public int maxSatisfaction(int[] input2) {
-        int input1 = input2.length;
+    public int maxSatisfaction(int[] satisfaction) {
         
-        Arrays.sort(input2);
-        if(input2[input1-1] <= 0){
-            return 0;
-        }
+        Arrays.sort(satisfaction);
+
+     int len=satisfaction.length;
+
+     if(satisfaction[len-1]<=0) return 0;
+
+     int max=satisfaction[len-1];
+
+     int base=max;
+
+     for(int i=len-2;i>=0;i--)
+
+     {
+
+         int next=satisfaction[i]+max+base;
+
+         if(next>=max)
+
+         {
+
+             max=next;
+
+             base+=satisfaction[i];
+
+         }
+
+         else
+
+             return max;
+
+     }
         
-        int res = 0;
-        int beforeSum = 0;
-        for(int i = input1-1; i>=0; i--){
-            int currNum = input2[i];
-            beforeSum += currNum;
-            if(beforeSum >= 0){
-            	res += beforeSum;
-            }else{
-                return res;
-            }
-        }
-        
-        return res;
+    return max;
         
     }
 }
