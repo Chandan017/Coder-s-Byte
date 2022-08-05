@@ -1,57 +1,44 @@
 class Solution {
 public:
-    
     int n , m;
+    int dx[4] = {-1,1,0,0};
+    int dy[4] = {0,0,-1,1};
     
-    void floodFill(vector<vector<char>> &grid , int r, int c)
+    void fill(vector<vector<char>> &grid , int r , int c)
     {
-        queue<pair<int,int>> q;
+        if(r<0 || c<0 || r>=n || c>=m || grid[r][c] != '1')
+            return ;
         
-        q.push({r,c});
         grid[r][c] = '0';
-        int dx[]={-1,1,0,0};
-        int dy[]={0,0,-1,1};
-        while(!q.empty())
-        {
-            int x = q.front().first ;
-            int y = q.front().second;
         
-            q.pop();
+        for(int ind = 0;ind<4;ind++)
+        {
+            int newR = r+dx[ind];
+            int newC = c+dy[ind];
             
-            for(int ind =0;ind<4;ind++)
-            {
-                int newX = x+dx[ind];
-                int newY = y+dy[ind];
-                
-                if(newX>=0 && newY>=0 && newX<n && newY<m && grid[newX][newY]=='1')
-                {
-                    q.push({newX , newY});
-                    grid[newX][newY] = '0';
-                }
-            }
+            fill(grid , newR , newC);
         }
         
         return ;
     }
     int numIslands(vector<vector<char>>& grid) {
         
-        n = grid.size();
-        m = grid[0].size();
-        int cnt = 0;
+        n = grid.size() , m = grid[0].size();
+        int cntOfLands = 0;
         
         for(int i=0;i<n;i++)
         {
             for(int j=0;j<m;j++)
             {
-                if(grid[i][j]=='1')
+                if(grid[i][j] == '1')
                 {
-                    floodFill(grid , i , j);
-                    cnt++;
+                    fill(grid , i , j);
+                    cntOfLands++;
                 }
             }
         }
         
-        return cnt;
+        return cntOfLands;
         
     }
 };
