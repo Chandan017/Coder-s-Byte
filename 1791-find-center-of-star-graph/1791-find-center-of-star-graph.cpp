@@ -2,19 +2,19 @@ class Solution {
 public:
     int findCenter(vector<vector<int>>& edges) {
         
-        map<int,int> mpp;
         int n = edges.size();
+        vector<int> degree(n+1);
         
         for(auto it:edges)
         {
-            mpp[it[0]]++;
-            mpp[it[1]]++;
+            degree[it[0]-1]++;
+            degree[it[1]-1]++;
         }
         
-        for(auto it:mpp)
+        for(int i=0;i<=n;i++)
         {
-            if(it.second == n)
-                return it.first;
+            if(degree[i] == n)
+                return i+1;
         }
         
         return -1;
