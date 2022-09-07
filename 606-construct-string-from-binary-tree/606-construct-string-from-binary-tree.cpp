@@ -56,8 +56,7 @@ public:
   
     string tree2str(TreeNode* root) {
         
-        string ans = "";
-        
+   
         string res = build(root);
         
         return res;
