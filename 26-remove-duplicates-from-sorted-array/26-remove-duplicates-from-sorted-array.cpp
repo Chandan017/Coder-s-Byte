@@ -2,25 +2,19 @@ class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
         
-        int n = nums.size() , i = 1 , j = 0;
+        int n = nums.size() , i = 1 , j = 1;
         
         while(i<n)
         {
-            if(nums[i]==nums[i-1])
-                i++;
-            else
+            if(nums[i] != nums[i-1])
             {
-                nums[j+1] = nums[i];
+                nums[j] = nums[i];
                 j++;
-                i++;
             }
+                i++;
         }
         
-        for(auto it:nums)
-            cout<<it<<" ";
-        cout<<endl;
-        
-        return j+1;
+        return j;
         
     }
 };
