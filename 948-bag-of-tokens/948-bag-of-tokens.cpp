@@ -6,8 +6,7 @@ public:
         int n = tokens.size();
         sort(tokens.begin() , tokens.end());
         
-        int maxScore = 0 , currScore = 0;
-        int i = 0 , j = n-1;
+        int maxScore = 0 , currScore = 0 , i = 0 , j = n-1;
         while(i<=j)
         {
             if(power >= tokens[i])
