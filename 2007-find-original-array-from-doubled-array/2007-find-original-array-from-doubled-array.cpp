@@ -16,18 +16,14 @@ public:
         
         for(int i=0;i<n;i++)
         {
-            if(mpp[nums[i]])
-            {
-                mpp[nums[i]]--;
-                int doub = nums[i]*2;
-                if(mpp.find(doub) != mpp.end() && mpp[doub])
-                {
-                    res.push_back(nums[i]);
-                    mpp[doub]--;
-                }
-                else
-                    return {};
-            }
+            if(mpp[nums[i]] == 0)
+                continue;
+            int doub = nums[i]*2;
+            if(mpp[doub] == 0)
+                return {};
+            mpp[doub]--;
+            mpp[nums[i]]--;
+            res.push_back(nums[i]);
         }
         
         return res;
