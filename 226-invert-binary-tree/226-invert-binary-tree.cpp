@@ -16,12 +16,12 @@ public:
         if(!root)
             return root;
         
-        TreeNode* newRoot = new TreeNode(root->val);
+        TreeNode* leftArea = root->left;
         
-        newRoot->left = invertTree(root->right);
-        newRoot->right = invertTree(root->left);
+        root->left = invertTree(root->right);
+        root->right = invertTree(leftArea);
         
-        return newRoot;
+        return root;
         
     }
 };
