@@ -9,7 +9,7 @@ public:
         
         sort(nums.begin() , nums.end());
         vector<int> res;
-        map<int,int> mpp;
+        unordered_map<int,int> mpp;
         
         for(int i=0;i<n;i++)
             mpp[nums[i]]++;
