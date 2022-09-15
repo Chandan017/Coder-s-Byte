@@ -26,6 +26,8 @@ public:
                     mpp[doub]--;
                     flag = true;
                 }
+                else
+                    return {};
                 
                 if(!flag)
                     mpp[nums[i]]++;
