@@ -4,8 +4,8 @@ public:
         
         queue<string> q;
         q.push(beginWord);
-        set<string> list(wordList.begin() , wordList.end());
-        set<string> vis;
+        unordered_set<string> list(wordList.begin() , wordList.end());
+        unordered_set<string> vis;
         vis.insert(beginWord);
         int steps = 1;
         while(q.size())
