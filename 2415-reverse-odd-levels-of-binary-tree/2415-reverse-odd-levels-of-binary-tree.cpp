@@ -61,8 +61,6 @@ public:
             else
                 isOdd = true;
         }
-        
-        cout<<endl;
               
         return root;
         
