@@ -10,6 +10,7 @@ public:
         unordered_set<string> vis(wordList.begin() , wordList.end());
         if(vis.find(beginWord) != vis.end())
             vis.erase(vis.find(beginWord));
+        
         if(vis.find(endWord) == vis.end())
             return -1;
         
@@ -54,47 +55,97 @@ public:
         return minSteps;
     }
     
-    void generatePath(string src , string &dest , vector<string> currPath , int totalSteps)
-    {
-        if(src == dest)
-        {
-            reverse(currPath.begin() , currPath.end());
-            res.push_back(currPath);
-            return ;
-        }
+//     void generatePath(string src , string &dest , vector<string> currPath , int totalSteps)
+//     {
+//         if(src == dest)
+//         {
+//             reverse(currPath.begin() , currPath.end());
+//             res.push_back(currPath);
+//             return ;
+//         }
        
-        for(int ind=0;ind<src.length();ind++)
+//         for(int ind=0;ind<src.length();ind++)
+//         {
+//             char original = src[ind];
+//             for(char ch='a';ch<='z';ch++)
+//             {
+//                 src[ind] = ch;
+//                 if(stepMap.find(src) != stepMap.end() && stepMap[src] == (totalSteps-1))
+//                 {
+//                     currPath.push_back(src);
+//                     generatePath(src , dest , currPath , totalSteps-1);
+//                     currPath.pop_back();
+//                 }
+//             }
+//             src[ind] = original;
+//         }
+//         return ;
+        
+//     }
+    
+    
+    void generatePath(string src , string dest , int minSteps)
+    {
+        vector<string> currPath;
+        currPath.push_back(src);
+        queue<vector<string>> q;
+        q.push(currPath);
+        
+        while(q.size())
         {
-            char original = src[ind];
-            for(char ch='a';ch<='z';ch++)
+            int len = q.size();
+            while(len--)
             {
-                src[ind] = ch;
-                if(stepMap.find(src) != stepMap.end() && stepMap[src] == (totalSteps-1))
+                vector<string> curr = q.front();
+                q.pop();
+                
+                string lastWord = curr.back();
+                
+                if(lastWord == dest)
                 {
-                    currPath.push_back(src);
-                    generatePath(src , dest , currPath , totalSteps-1);
-                    currPath.pop_back();
+                    reverse(curr.begin() , curr.end());
+                    res.push_back(curr);
+                    continue;
+                }
+                
+                for(int ind=0;ind<lastWord.length();ind++)
+                {
+                    char original = lastWord[ind];
+                    
+                    for(char ch='a';ch<='z';ch++)
+                    {
+                        lastWord[ind] = ch;
+                        if(stepMap.find(lastWord) != stepMap.end() && stepMap[lastWord]==minSteps-1)
+                        {
+                            curr.push_back(lastWord);
+                            q.push(curr);
+                            curr.pop_back();
+                        }
+                    }
+                    lastWord[ind] = original;
                 }
             }
-            src[ind] = original;
+            minSteps--;
         }
+        
         return ;
         
     }
+    
     
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
         
         
         int minSteps = getMinSteps(beginWord , endWord , wordList);
         
-        cout<<minSteps<<endl;
+     
         if(minSteps == -1)
             return res;
         
         vector<string> currPath;
         currPath.push_back(endWord);
         
-        generatePath(endWord , beginWord , currPath , minSteps);
+        generatePath(endWord , beginWord , minSteps);
         
         return res;
     }
