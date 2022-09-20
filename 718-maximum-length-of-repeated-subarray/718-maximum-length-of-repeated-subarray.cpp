@@ -1,9 +1,8 @@
 class Solution {
 public:
-    int n,m , maxLen = 0;
-    vector<vector<int>> dp;
     int solve(vector<int> &nums1 , vector<int> &nums2)
     {
+        int n = nums1.size() , m = nums2.size() , maxLen = 0;
         vector<vector<int>> dp(n+1,vector<int>(m+1));
         for(int i=1;i<=n;i++)
         {
@@ -24,11 +23,8 @@ public:
        
     }
     int findLength(vector<int>& nums1, vector<int>& nums2) {
-        
-        n = nums1.size() , m = nums2.size();
-        int res = solve(nums1 , nums2);
-       
-        return maxLen;
+              
+        return solve(nums1 , nums2);
         
     }
 };
