@@ -9,13 +9,14 @@ public:
         
         if(dp[ind1][ind2] != -1)
             return dp[ind1][ind2];
-        solve(nums1 , nums2 ,ind1+1 , ind2);
-        solve(nums1 , nums2 , ind1 , ind2+1);
+        
         
         if(nums1[ind1] == nums2[ind2])
             dp[ind1][ind2] = 1 + solve(nums1 , nums2 , ind1+1 ,ind2+1);
         else
             dp[ind1][ind2] = 0;
+        solve(nums1 , nums2 ,ind1+1 , ind2);
+        solve(nums1 , nums2 , ind1 , ind2+1);
         
         maxLen = max(maxLen , dp[ind1][ind2]);
         return dp[ind1][ind2];
