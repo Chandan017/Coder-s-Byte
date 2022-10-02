@@ -28,7 +28,6 @@ public:
         
         dp.resize(n+1 , vector<int> (target+1 , -1));
         long res = solve(n , k , target);
-        res %= mod;
         return res;
     }
 };
