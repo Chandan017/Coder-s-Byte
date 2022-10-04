@@ -27,9 +27,7 @@ public:
     int getPrefix()
     {
         return prefixCnt;
-    }
-    
-    
+    }   
     
 };
 
@@ -43,11 +41,11 @@ public:
         root = new Node();
     }
     
-    void insert(string word)
+    void insert(string &word)
     {
         Node* node = root;
         
-        for(auto c:word)
+        for(auto &c:word)
         {
             if(!node->containsKey(c))
                 node->put(c);
@@ -62,7 +60,7 @@ public:
     {
         Node* node = root;
         int totalCnt = 0;
-        for(auto c:word)
+        for(auto &c:word)
         {
             if(node->containsKey(c))
                 node = node->nextLink(c);
