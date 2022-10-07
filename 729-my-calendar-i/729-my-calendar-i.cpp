@@ -7,7 +7,7 @@ public:
     
     bool book(int start, int end) {
                 
-        for(auto it:nums)
+        for(auto &it:nums)
         {
             if(start < it[1] && it[0] <end)
                 return false;
