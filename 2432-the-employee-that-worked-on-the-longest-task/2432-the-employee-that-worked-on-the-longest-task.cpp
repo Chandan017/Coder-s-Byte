@@ -3,7 +3,7 @@ public:
     int hardestWorker(int n, vector<vector<int>>& logs) {
         
         int prev = 0;
-        vector<int> id(n+1,0);
+        vector<int> id(n,0);
         
         for(auto it:logs)
         {
