@@ -4,7 +4,7 @@ public:
         
         int prev = 0 , longestTask = -1 , empID = INT_MAX;
         
-        for(auto it:logs)
+        for(auto &it:logs)
         {
             int currTime = it[1] - prev;
             
