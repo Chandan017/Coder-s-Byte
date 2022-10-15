@@ -23,7 +23,7 @@ public:
                 mpp[original]++;
         }
      
-        for(auto it:mpp)
+        for(auto &it:mpp)
         {
             string original = it.first;
             reverse(original.begin() , original.end());
