@@ -2,7 +2,7 @@ class Solution {
 public:
     int longestPalindrome(vector<string>& words) {
         
-        map<string,int> mpp;
+        unordered_map<string,int> mpp;
         int totalLen = 0 ;
         bool flag = true;
         for(auto &it:words)
