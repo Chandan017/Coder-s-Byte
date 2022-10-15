@@ -5,7 +5,7 @@ public:
         map<string,int> mpp;
         int totalLen = 0 ;
         bool flag = true;
-        for(auto it:words)
+        for(auto &it:words)
         {
             string original = it;
             reverse(it.begin() , it.end());
@@ -14,33 +14,30 @@ public:
             {
                 mpp[it]--;
                 
+                if(mpp[it] == 0)
+                    mpp.erase(mpp.find(it));
+                
                 totalLen += 4;
             }
             else
                 mpp[original]++;
         }
-        
-        int maxLen = 0;
+     
         for(auto it:mpp)
         {
             string original = it.first;
             reverse(original.begin() , original.end());
             
-            if(original[0] == original[1])
+            if(original == it.first)
             {
-                int currLen = it.second + it.second;
-                
-                maxLen = max(maxLen , currLen);
-            }
-            else if(original == it.first)
-            {
-                maxLen = max(maxLen , 2);
+                totalLen += 2;
+                break;
             }
             
             
         }
         
-        totalLen += maxLen;
+      
         return totalLen;
         
     }
