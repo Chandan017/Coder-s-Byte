@@ -4,7 +4,6 @@ public:
         
         unordered_map<string,int> mpp;
         int totalLen = 0 ;
-        bool flag = true;
         for(auto &it:words)
         {
             string original = it;
