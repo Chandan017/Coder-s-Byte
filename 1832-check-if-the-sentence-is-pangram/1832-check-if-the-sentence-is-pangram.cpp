@@ -2,12 +2,20 @@ class Solution {
 public:
     bool checkIfPangram(string sentence) {
         
-        unordered_set<char> st;
+        vector<int> vis(26,0);
+        int cnt = 0;
         
         for(auto c:sentence)
-            st.insert(c);
+        {
+            if(vis[c-'a'] == 0)
+            {
+                cnt++;
+            }
+            
+            vis[c-'a']++;
+        }
         
-        return (st.size()==26);
+        return (cnt==26);
         
     }
 };
