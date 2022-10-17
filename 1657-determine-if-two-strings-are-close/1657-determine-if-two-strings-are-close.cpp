@@ -2,33 +2,35 @@ class Solution {
 public:
     bool closeStrings(string word1, string word2) {
         
-        map<char,int> freq;
+        vector<int> freq1(26,0) , freq2(26,0);
         
-        for(auto it:word1)
+        for(auto &c:word1)
         {
-            freq[it]++;
+            freq1[c-'a']++;
         }
         
-        map<int,int> cnt;
-        
-        for(auto it:freq)
+        for(auto &c:word2)
         {
-            cnt[it.second]++;
-        }
-        
-        map<char,int> freq2;
-        
-        for(auto it:word2)
-        {
-            freq2[it]++;
-            if(freq.find(it) == freq.end())
+            freq2[c-'a']++;
+            
+            if(freq1[c-'a']==0)
                 return false;
         }
         
-        for(auto it:freq2)
+        unordered_map<int,int> cntMap;
+        
+        for(auto &it:freq1)
         {
-            if(cnt.find(it.second) != cnt.end() && cnt[it.second] > 0)
-                cnt[it.second]--;
+            if(it > 0)
+                cntMap[it]++;
+        }
+        
+        for(auto &it:freq2)
+        {
+            if(it == 0)
+                continue;
+            if(cntMap.find(it) != cntMap.end() && cntMap[it] > 0)
+                cntMap[it]--;
             else
                 return false;
         }
