@@ -2,23 +2,21 @@ class Solution {
 public:
     int minSteps(string s, string t) {
         
-        unordered_map<char,int> mpp;
+        vector<int> vis(26,0);
         
         for(auto &c:s)
-        {
-            mpp[c]++;
-        }
+            vis[c-'a']++;
         
         for(auto &c:t)
         {
-            if(mpp.find(c) != mpp.end() && mpp[c] > 0)
-                mpp[c]--;
+            if(vis[c-'a'] > 0)
+                vis[c-'a']--;
         }
         
         int totalConversions = 0;
         
-        for(auto it:mpp)
-            totalConversions += it.second;
+        for(auto it:vis)
+            totalConversions += it;
         
         return totalConversions;
         
