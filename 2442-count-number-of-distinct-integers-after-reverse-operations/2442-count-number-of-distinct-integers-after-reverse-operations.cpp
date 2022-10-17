@@ -7,11 +7,14 @@ public:
         for(auto it:nums)
         {
             st.insert(it);
+            int currNum = 0;
             
-            string curr = to_string(it);
-            reverse(curr.begin() , curr.end());
-            
-            st.insert(stoi(curr));
+            while(it)
+            {
+                currNum = (currNum*10) + (it%10);
+                it /= 10;
+            }
+            st.insert(currNum);
         }
         
         
