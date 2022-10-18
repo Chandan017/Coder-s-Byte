@@ -1,5 +1,6 @@
 class Solution {
 public:
+    
     string countAndSay(int n) {
         
         if(n == 1)
