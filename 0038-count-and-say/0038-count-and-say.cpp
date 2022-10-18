@@ -6,27 +6,29 @@ public:
         if(n == 1)
             return "1";
         
-        string curr = countAndSay(n-1);
+        string res = "1";
         
-        string res = "";
-        char prev = curr[0];
-        int freq = 0 , len = curr.length();
-        for(int i=0;i<=len;i++)
+        for(int i=2;i<=n;i++)
         {
-            if(curr[i] != prev || i == len)
+            char prev = res[0] ;
+            int freq = 0 , len = res.length();
+            string curr = "";
+            for(int i=0;i<=len;i++)
             {
-                res += (to_string(freq));
-                
-                res += prev;
-                
-                if(i != len)
-                    prev = curr[i];
-                freq = 1;
+                if(prev != res[i] || i == len)
+                {
+                    curr += to_string(freq);
+                    curr += prev;
+                    prev = res[i];
+                    freq = 1;
+                }
+                else
+                    freq++;
             }
-            else
-                freq++;
+            
+            
+            res = curr;
         }
-        
         
         return res;
         
