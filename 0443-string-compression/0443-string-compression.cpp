@@ -30,7 +30,7 @@ public:
                 freq++;
         }
         chars.pop_back();
-        return totalLen;
+        return prevInd;
         
     }
 };
