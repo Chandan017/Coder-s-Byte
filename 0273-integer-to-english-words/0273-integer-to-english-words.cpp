@@ -10,34 +10,34 @@ public:
         if(num >= 1000000000)
         {
             string res = solve(num/1000000000) + "Billion ";
-            res += solve(num % 1000000000);
+            res = res + solve(num % 1000000000);
             
             return res;
         }
         else if(num >= 1000000)
         {
             string res = solve(num/1000000) + "Million ";
-            res += solve(num % 1000000);
+            res = res + solve(num % 1000000);
             
             return res;
         }
         else if(num >= 1000)
         {
             string res = solve(num/1000) + "Thousand ";
-            res += solve(num%1000);
+            res = res + solve(num%1000);
             return res;
         }
         else if(num >=100)
         {
             string res = solve(num/100) + "Hundred ";
-            res += solve(num%100);
+            res = res + solve(num%100);
             
             return res;
         }
         else if(num >= 20)
         {
             string res = tens[(num/10)];
-            res += solve(num%10);
+            res = res + solve(num%10);
             
             return res;
         }
