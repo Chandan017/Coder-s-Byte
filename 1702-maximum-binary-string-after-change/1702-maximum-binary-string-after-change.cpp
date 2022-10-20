@@ -19,9 +19,7 @@ public:
         }
         while(ind<n)
         {
-            if(cnt > 1)
-                bin[ind] = '1';
-            else if(cnt == 1)
+            if(cnt == 1)
                 bin[ind] = '0';
             else
                 bin[ind] = '1';
@@ -29,7 +27,7 @@ public:
             ind++;
             
         }
-        cout<<ind<<" "<<cnt<<endl;
+        
         return bin;
         
     }
