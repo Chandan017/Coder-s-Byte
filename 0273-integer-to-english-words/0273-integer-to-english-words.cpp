@@ -55,8 +55,8 @@ public:
             
             return res;
         }
-
-        return ones[num%10];
+        else
+            return ones[num%10];
             
     }
     string numberToWords(int num) {
