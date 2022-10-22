@@ -2,7 +2,7 @@ class Solution {
 public:
     bool same(unordered_map<char,int> &tMap , unordered_map<char,int> &sMap)
     {
-        for(auto it:tMap)
+        for(auto &it:tMap)
         {
             if(sMap.find(it.first) != sMap.end()  && sMap[it.first] >= it.second)
                 continue;
@@ -15,9 +15,6 @@ public:
    
     string minWindow(string s, string t) {
         
-        
-        if(s.length() < t.length())
-            return "";
         
         unordered_map<char,int> tMap  , sMap;
         
@@ -38,15 +35,12 @@ public:
                 while(prevInd < i && sMap[s[prevInd]] > tMap[s[prevInd]])
                 {
                     sMap[s[prevInd]]--;
-                    
                     curr.erase(curr.begin());
                     prevInd++;
                 }
                 
-                if((i-prevInd+1) < res.length() || res.length()==0)
-                {
+                if(curr.length() < res.length() || res.length()==0)
                     res = curr;
-                }
                 
                 sMap[s[prevInd]]--;
                
