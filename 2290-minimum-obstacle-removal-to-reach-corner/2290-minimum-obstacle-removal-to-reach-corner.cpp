@@ -1,5 +1,6 @@
 class Solution {
 public:
+    
     int minimumObstacles(vector<vector<int>>& grid) {
         
         int n = grid.size();
@@ -8,7 +9,7 @@ public:
         vector<vector<int>> dp(n , vector<int> (m , 1e5+1));
         
         
-        priority_queue<vector<int> , vector<vector<int>> , greater<vector<int>>> q;
+        priority_queue<tuple<int,int,int> , vector<tuple<int,int,int>> , greater<tuple<int,int,int>>> q;
         q.push({0,0,0});
         
         int dx[] = {-1,1,0,0};
@@ -16,23 +17,23 @@ public:
         
         while(q.size())
         {
-            vector<int> curr = q.top();
+            auto [cnt,x,y] = q.top();
             q.pop();
             
             
-            if(curr[1] == n-1 && curr[2]==m-1)
-                return curr[0];
+            if(x == n-1 && y==m-1)
+                return cnt;
             
             for(int ind=0;ind<4;ind++)
             {
-                int newX = curr[1] + dx[ind];
-                int newY = curr[2] + dy[ind];
+                int newX = x + dx[ind];
+                int newY = y + dy[ind];
                 
                 if(newX>=0 && newX<n && newY>=0 && newY<m)
                 {
-                    if(dp[newX][newY] > curr[0] + grid[newX][newY])
+                    if(dp[newX][newY] > cnt + grid[newX][newY])
                     {
-                        dp[newX][newY] = curr[0] + grid[newX][newY];
+                        dp[newX][newY] = cnt + grid[newX][newY];
                         q.push({dp[newX][newY] , newX , newY});
                     }  
                 }
