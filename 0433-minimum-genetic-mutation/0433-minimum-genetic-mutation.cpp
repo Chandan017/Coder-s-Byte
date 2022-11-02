@@ -22,21 +22,21 @@ public:
                 for(int i=0;i<8;i++)
                 {
                     
-                        char temp = curr[i];
+                    char temp = curr[i];
                         
-                        for(int j=0;j<characters.length();j++)
-                        {
-                            curr[i] = characters[j];
+                    for(int j=0;j<characters.length();j++)
+                    {
+                        curr[i] = characters[j];
                             
-                            if(vis.find(curr) != vis.end())
-                            {
-                                q.push(curr);
-                                vis.erase(vis.find(curr));
-                            }
+                        if(vis.find(curr) != vis.end())
+                        {
+                            q.push(curr);
+                            vis.erase(vis.find(curr));
                         }
-                        
-                        curr[i] = temp;
                     }
+                        
+                    curr[i] = temp;
+                }
             }
             
             steps++;
