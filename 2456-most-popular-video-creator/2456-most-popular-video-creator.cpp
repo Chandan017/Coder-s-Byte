@@ -15,14 +15,14 @@ public:
             maxView = max(maxView , mpp[creators[i]]);
         }
         
-        map<string,set<pair<int,string>>> temp;
+        unordered_map<string,set<pair<int,string>>> temp;
         
         for(int i=0;i<n;i++)
         {
             temp[creators[i]].insert({ -views[i] ,ids[i]});
         }
         
-        // set<> st;
+        
         
         for(int i=0;i<n;i++)
         {
@@ -35,8 +35,6 @@ public:
                 mpp[creators[i]] = -1;
             }
         }
-        
-        // vector<tuple<long,string,string>> temp;
         
         
         
