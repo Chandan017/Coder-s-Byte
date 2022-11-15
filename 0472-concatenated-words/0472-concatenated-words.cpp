@@ -101,14 +101,14 @@ public:
         
         Trie* trie = new Trie();
         
-        for(auto it:words)
+        for(auto &it:words)
         {
             trie->insert(it);
         }
 
         
         
-        for(auto it:words)
+        for(auto &it:words)
         {
             if(trie->find(it , "" , 0 , 0))
                 res.push_back(it);
