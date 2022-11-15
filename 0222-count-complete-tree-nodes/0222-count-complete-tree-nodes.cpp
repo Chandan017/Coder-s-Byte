@@ -11,7 +11,31 @@
  */
 class Solution {
 public:
-    int cnt = 0;
+    
+    int getLeft(TreeNode* root)
+    {
+        int left = 0;
+        
+        while(root)
+        {
+            left++;
+            root = root->left;
+        }
+        
+        return left;
+    }
+    
+    int getRight(TreeNode* root)
+    {
+        int right = 0;
+        while(root)
+        {
+            right++;
+            root = root->right;
+        }
+        
+        return right;
+    }
     
     
     int countNodes(TreeNode* root) {
@@ -19,12 +43,15 @@ public:
         if(!root)
             return 0;
         
-        cnt++;
+        int lh = getLeft(root);
+        int rh = getRight(root);
         
-        countNodes(root->left);
-        countNodes(root->right);
+        if(lh == rh)
+        {
+            return pow(2,lh)-1;
+        }
         
-        return cnt;
+        return  1 + countNodes(root->left) + countNodes(root->right);
         
     }
 };
