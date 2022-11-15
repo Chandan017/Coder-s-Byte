@@ -43,7 +43,7 @@ public:
         {
             Node* dummy = root;
             
-            for(auto it:word)
+            for(auto &it:word)
             {
                 if(!dummy->containsKey(it))
                     dummy->putKey(it);
@@ -57,7 +57,7 @@ public:
         {
             Node* dummy = root;
             
-            for(auto it:word)
+            for(auto &it:word)
             {
                 if(dummy->containsKey(it))
                     dummy = dummy->nextLink(it);
@@ -68,7 +68,7 @@ public:
             return dummy->isEnd();
         }
         
-        bool find(string word , string curr , int ind , int cnt)
+        bool find(string &word , string curr , int ind , int cnt)
         {
             if(ind == word.length())
             {
@@ -82,7 +82,6 @@ public:
             ind += 1;
             if(search(curr))
             {
-                // cout<<curr<<" ";
                 bool takeIt = find(word , "" , ind, cnt+1);
                 
                 if(takeIt)
@@ -106,8 +105,8 @@ public:
         {
             trie->insert(it);
         }
-//         if(trie->find("abc" , "" , 0 , 0))
-//                 res.push_back("abc");
+
+        
         
         for(auto it:words)
         {
