@@ -13,22 +13,16 @@ class Solution {
 public:
     int cnt = 0;
     
-    void solve(TreeNode* root)
-    {
-        if(!root)
-            return ;
-        cnt++;
-        solve(root->left);
-        solve(root->right);
-        return ;
-    }
+    
     int countNodes(TreeNode* root) {
         
         if(!root)
             return 0;
         
+        cnt++;
         
-        solve(root);
+        countNodes(root->left);
+        countNodes(root->right);
         
         return cnt;
         
