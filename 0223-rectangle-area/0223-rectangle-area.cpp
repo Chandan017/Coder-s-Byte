@@ -23,7 +23,7 @@ public:
         }
         
         
-        cout<<commonArea<<" "<<xOverlap<<" "<<yOverlap<<endl;
+        // cout<<commonArea<<" "<<xOverlap<<" "<<yOverlap<<endl;
         
         long totalArea = area1 + area2 - commonArea;
         
