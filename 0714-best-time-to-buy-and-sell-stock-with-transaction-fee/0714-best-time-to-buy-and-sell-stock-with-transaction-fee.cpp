@@ -11,19 +11,20 @@ public:
         if(dp[ind][canBuy] != -1)
             return dp[ind][canBuy];
         
-        int buy = 0 , notBuy = 0 , hold = 0 , notHold = 0;
+        int hold = solve(prices , ind+1 , fee , canBuy , dp);
+        
+        int buy = 0 , sell = 0;
         if(canBuy)
         {
             buy = -prices[ind] + solve(prices , ind+1 , fee , false , dp);
         }
         else
         {
-            notHold = prices[ind] + solve(prices , ind+1 , fee , true , dp) - fee;
+            sell = prices[ind] + solve(prices , ind+1 , fee , true , dp) - fee;
         }
-        hold = solve(prices , ind+1 , fee , canBuy , dp);
         
         
-        dp[ind][canBuy] = max({buy , notBuy , hold , notHold});
+        dp[ind][canBuy] = max({buy , sell , hold});
         
         return dp[ind][canBuy];
     }
