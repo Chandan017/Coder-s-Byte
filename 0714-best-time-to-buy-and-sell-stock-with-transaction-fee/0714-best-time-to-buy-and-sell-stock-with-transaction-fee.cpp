@@ -15,13 +15,12 @@ public:
         if(canBuy)
         {
             buy = -prices[ind] + solve(prices , ind+1 , fee , false , dp);
-            notBuy = solve(prices , ind+1 , fee , canBuy , dp);
         }
         else
         {
-            hold = solve(prices , ind+1 , fee , canBuy , dp);
             notHold = prices[ind] + solve(prices , ind+1 , fee , true , dp) - fee;
         }
+        hold = solve(prices , ind+1 , fee , canBuy , dp);
         
         
         dp[ind][canBuy] = max({buy , notBuy , hold , notHold});
