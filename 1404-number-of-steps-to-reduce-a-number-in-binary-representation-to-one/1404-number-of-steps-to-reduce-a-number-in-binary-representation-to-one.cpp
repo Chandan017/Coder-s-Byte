@@ -3,7 +3,6 @@ public:
     void addOne(string &s)
     {
         int n = s.length();
-        int carry = 1;
         for(int i=n-1;i>=0;i--)
         {
             if(s[i] == '1')
