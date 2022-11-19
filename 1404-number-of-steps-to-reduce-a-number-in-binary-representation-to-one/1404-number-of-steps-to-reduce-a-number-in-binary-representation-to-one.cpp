@@ -23,7 +23,7 @@ public:
     int numSteps(string s) {
         
         int cnt = 0;
-        while(s.length() > 1)
+        while(s != "1")
         {
             if(s.back() == '0')
                 s.pop_back();
