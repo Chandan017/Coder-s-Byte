@@ -1,8 +1,6 @@
 class Solution {
 public:
 
-
-
     bool isPalindrome(string &s)
     {
         int l = 0 , h = s.length()-1;
@@ -17,6 +15,7 @@ public:
 
         return true;
     }
+    
     bool checkPalindromeFormation(string a, string b) {
 
         int n = a.length();
@@ -38,12 +37,12 @@ public:
 
         if(i>=j)
             return true;
-        // cout<<n<<" "<<i<<" "<<j<<endl;
         
-        string temp = b.substr(i , j-i+1);
+        
+        string temp1 = b.substr(i , j-i+1);
         string temp2 = a.substr(i , j-i+1);
-        // cout<<temp<<" "<<temp2<<endl;
-        if(isPalindrome(temp) || isPalindrome(temp2))
+        
+        if(isPalindrome(temp1) || isPalindrome(temp2))
             return true;
         
         i=0,j=n-1;
@@ -63,10 +62,10 @@ public:
         if(i>=j)
         return true;
         
-        temp = b.substr(i , j-i+1);
+        temp1 = b.substr(i , j-i+1);
         temp2 = a.substr(i , j-i+1);
         
-        if(isPalindrome(temp) || isPalindrome(temp2))
+        if(isPalindrome(temp1) || isPalindrome(temp2))
             return true;
 
         return false;
