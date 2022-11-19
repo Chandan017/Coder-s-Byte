@@ -2,45 +2,34 @@ class Solution {
 public:
     string smallestSubsequence(string s) {
         
+        vector<int> freq(26 , 0);
+        vector<bool> isTaken(26 , false);
         
-        vector<int> freq(26,0);
-        vector<bool> taken(26,false);
-        
-        for(auto it:s)
+        for(auto &it:s)
             freq[it-'a']++;
         
-        stack<int> st;
+        string res = "";
         
-        for(auto ch:s)
+        for(auto &it:s)
         {
-            freq[ch-'a']--;
+            freq[it-'a']--;
             
-            if(taken[ch-'a'])
+            if(isTaken[it-'a'])
                 continue;
             
-            while(st.size() && (st.top()+'a') > ch && freq[st.top()] > 0)
+            while(res.length() && res.back() > it && freq[res.back()-'a'])
             {
-                taken[st.top()] = false;
-                st.pop();
+                isTaken[res.back()-'a'] = false;
+                
+                res.pop_back();
             }
             
-            taken[ch-'a'] = true;
+            isTaken[it-'a'] = true;
             
-            st.push(ch-'a');
+            res += it;
         }
-        
-        string res = "";
-        while(st.size())
-        {
-            res += (st.top()+'a');
-            st.pop();
-        }
-        
-        reverse(res.begin() , res.end());
         
         return res;
-        
-        
         
     }
 };
