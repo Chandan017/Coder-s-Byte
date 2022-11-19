@@ -9,7 +9,7 @@ public:
         for(auto it:s)
             freq[it-'a']++;
         
-        stack<char> st;
+        stack<int> st;
         
         for(auto ch:s)
         {
@@ -18,21 +18,21 @@ public:
             if(taken[ch-'a'])
                 continue;
             
-            while(st.size() && st.top() > ch && freq[st.top()-'a'] > 0)
+            while(st.size() && (st.top()+'a') > ch && freq[st.top()] > 0)
             {
-                taken[st.top()-'a'] = false;
+                taken[st.top()] = false;
                 st.pop();
             }
             
             taken[ch-'a'] = true;
             
-            st.push(ch);
+            st.push(ch-'a');
         }
         
         string res = "";
         while(st.size())
         {
-            res += st.top();
+            res += (st.top()+'a');
             st.pop();
         }
         
