@@ -18,7 +18,7 @@ class Solution{
             curr ^= Arr[i];
         }
         
-        // cout<<curr<<endl;
+    
         long long int mask = 1;
         while((curr & mask) == 0)
         {
