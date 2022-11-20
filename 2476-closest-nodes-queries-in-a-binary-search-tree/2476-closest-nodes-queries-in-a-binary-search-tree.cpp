@@ -67,7 +67,7 @@ public:
             
             res.push_back({maxi , mini});
         }
-        // cout<<endl;
+    
         
         return res;
     }
