@@ -6,7 +6,7 @@ using namespace std;
 class Solution{
 	public:
 	vector<vector<int>> res;
-	void solve(int sum , int currSum , int currNum , vector<int> path)
+	void solve(int sum , int currSum , int currNum , vector<int> &path)
 	{
 	    if(currNum < 1 || currSum > sum)
 	        return ;
