@@ -1,21 +1,20 @@
 class Solution {
 public:
     
-    
     void rotate(vector<int> &nums)
     {
         int n = nums.size();
         
         if(n == 0)
             return ;
-        int last = nums[n-1];
+        int first = nums[0];
         
-        for(int i=n-1;i>0;i--)
+        for(int i=0;i<n-1;i++)
         {
-            nums[i] = nums[i-1];
+            nums[i] = nums[i+1];
         }
         
-        nums[0] = last;
+        nums[n-1] = first;
         
         return ;
     }
@@ -27,9 +26,12 @@ public:
         while(pq.size())
         {
             rotate(res);
-            res.insert(res.begin() , pq.top());
+            res.push_back(pq.top());
             pq.pop();
         }
+        
+        
+        reverse(res.begin() , res.end());
         
         return res;
     }
