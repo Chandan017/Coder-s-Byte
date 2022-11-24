@@ -12,7 +12,6 @@ public:
          if(r<0 || c<0 || r>=n || c>=m || board[r][c] != word[currInd])
             return false;
         
-        
         char val = board[r][c];
         
         board[r][c] = '*';
