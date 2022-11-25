@@ -10,13 +10,10 @@ public:
             while(st.size() && nums[st.top()] >= nums[i])
                 st.pop();
             
-            if(!st.size())
-            {
-                nsr[i] = n-i;
-            }
-            else
+            if(st.size())
                 nsr[i] = st.top()-i;
-            
+            else
+                nsr[i] = n-i;
             st.push(i);
         }
         
@@ -34,13 +31,10 @@ public:
             while(st.size() && nums[st.top()] > nums[i])
                 st.pop();
             
-            if(!st.size())
-            {
-                nsl[i] = i+1;
-            }
-            else
+            if(st.size())
                 nsl[i] = i-st.top();
-            
+            else
+                nsl[i] = i+1;
             
             st.push(i);
         }
@@ -54,46 +48,16 @@ public:
         long res = 0;
         int mod = 1e9+7 , n = arr.size();
         
-//         for(int i=0;i<n;i++)
-//         {
-//             int mini = arr[i];
-            
-//             for(int j=i;j<n;j++)
-//             {
-//                 mini = min(mini , arr[j]);
-//                 cout<<mini<<" ";
-//             }
-            
-//             cout<<endl;
-//         }
-//         cout<<endl;
-        
-        // for(auto it:nsl)
-        //     cout<<it<<" ";
-        // cout<<endl;
-        // for(auto it:nsr)
-        //     cout<<it<<" ";
-        // cout<<endl;
-        
-    
         
         for(int i=0;i<n;i++)
         {
-            long cnt = nsl[i]*nsr[i];
+            long times = (nsl[i] * nsr[i]) % mod;
+            long currMin = (times * arr[i]) % mod;
             
-            // cout<<cnt<<" ";
-            
-            cnt = (cnt*arr[i])%mod;
-            
-            res  = (res + cnt)%mod;
+            res  = (res + currMin) % mod;
         }
         
         return res;
-//         for(auto it:nsl)
-//             cout<<it<<" ";
-//         cout<<endl;
-        
-//         return 1;
         
         
         
