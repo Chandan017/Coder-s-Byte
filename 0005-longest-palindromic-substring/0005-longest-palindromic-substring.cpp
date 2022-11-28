@@ -29,7 +29,7 @@ public:
             {
                 curr += s[j];
                 
-                if(isPalindrome(curr) && curr.length() > res.length())
+                if(curr.length() > res.length()  && isPalindrome(curr))
                     res = curr;
             }
         }
