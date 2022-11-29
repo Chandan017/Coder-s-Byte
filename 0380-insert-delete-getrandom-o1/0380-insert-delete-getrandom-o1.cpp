@@ -22,18 +22,14 @@ public:
         
         if(mpp.find(val) != mpp.end())
         {
-            if(nums.back() == val)
-            {
-                nums.pop_back();
-            }
-            else
+            if(nums.back() != val)
             {
                 int ind = mpp[val];
                 nums[ind] = nums.back();
-                mpp[nums.back()] = ind;
-                nums.pop_back();
+                mpp[nums.back()] = ind;  
             }
             mpp.erase(val);
+            nums.pop_back();
             
             return true;
         }
