@@ -47,8 +47,6 @@ public:
         if(leaf1 == leaf2)
             return true;
         
-        
-        
         return false;
         
         
