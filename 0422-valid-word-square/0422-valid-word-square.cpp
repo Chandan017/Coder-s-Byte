@@ -7,8 +7,7 @@ public:
         
         for(int i=0;i<n;i++)
         {
-            int m = words[i].length();
-            for(int j=0;j<m;j++)
+            for(int j=0;j<words[i].length();j++)
             {
                 if(j>=n)
                     return false;
