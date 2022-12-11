@@ -3,20 +3,21 @@ public:
     int twoSumLessThanK(vector<int>& nums, int k) {
         
         
-        int maxSum = -1 , n = nums.size();
+        sort(nums.begin() , nums.end());
         
+        int l = 0 , h = nums.size() -1 , maxSum = -1;
         
-        for(int i=0;i<n-1;i++)
+        while(l<h)
         {
-            for(int j=i+1;j<n;j++)
+            int currSum = nums[l] + nums[h];
+            
+            if(currSum < k)
             {
-                int currSum = nums[i] + nums[j];
-                
-                if(currSum < k)
-                {
-                    maxSum = max(maxSum ,currSum);
-                }
+                maxSum = max(maxSum , currSum);
+                l++;
             }
+            else
+                h--;
         }
         
         return maxSum;
