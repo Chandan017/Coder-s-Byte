@@ -23,9 +23,6 @@ public:
                 r--;
             }
             l = prev+2;
-            
-            // r = l+1;
-            // l++;
         }
         return ;
         
