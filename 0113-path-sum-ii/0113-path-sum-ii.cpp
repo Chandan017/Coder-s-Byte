@@ -17,7 +17,7 @@ public:
         return (!root->left && !root->right);
     }
     
-    void getAllPaths(TreeNode* root , vector<int> currPath , int targetSum)
+    void getAllPaths(TreeNode* root , vector<int> &currPath , int targetSum)
     {
         if(!root)
             return ;
@@ -28,11 +28,14 @@ public:
         if(isLeaf(root) && targetSum==0)
         {
             res.push_back(currPath);
+            currPath.pop_back();
             return ;
         }
         
         getAllPaths(root->left , currPath , targetSum);
         getAllPaths(root->right , currPath , targetSum);
+        
+        currPath.pop_back();
         return ;
     }
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
