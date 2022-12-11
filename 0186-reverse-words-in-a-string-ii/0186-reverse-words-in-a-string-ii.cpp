@@ -1,35 +1,32 @@
 class Solution {
 public:
     void reverseWords(vector<char>& s) {
+    
         
-        stack<char> st;
-        vector<char> res;
-        int n = s.size();
+        reverse(s.begin() , s.end());
         
-        for(int i=n-1;i>=0;i--)
+        int l = 0 , r = 0 , n = s.size();
+        while(l<n)
         {
-            if(s[i] == ' ')
+            r = l;
+            while(r+1<n && s[r+1] != ' ')
             {
-                while(st.size())
-                {
-                    res.push_back(st.top());
-                    st.pop();
-                }
-                res.push_back(' ');
+                r++;
             }
-            else
-                st.push(s[i]);
+            
+            int prev = r;
+            
+            while(l<r)
+            {
+                swap(s[l] , s[r]);
+                l++;
+                r--;
+            }
+            l = prev+2;
+            
+            // r = l+1;
+            // l++;
         }
-        
-        
-        while(st.size())
-        {
-            res.push_back(st.top());
-            st.pop();
-        }
-        
-        s = res;
-        
         return ;
         
     }
