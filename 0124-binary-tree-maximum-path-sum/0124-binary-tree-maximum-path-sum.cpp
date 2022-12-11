@@ -15,7 +15,7 @@ public:
     long solve(TreeNode* root)
     {
         if(!root)
-            return INT_MIN;
+            return -1;
         
         long l = solve(root->left);
         long r = solve(root->right);
