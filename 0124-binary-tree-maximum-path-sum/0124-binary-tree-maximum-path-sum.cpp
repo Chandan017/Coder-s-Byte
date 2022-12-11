@@ -12,48 +12,24 @@
 class Solution {
 public:
 
-    long solve(TreeNode* root)
+    int solve(TreeNode* root , int &maxi)
     {
         if(!root)
-            return -1;
+            return 0;
         
-        long l = solve(root->left);
-        long r = solve(root->right);
+        int l = max( 0 , solve(root->left , maxi));
+        int r = max( 0 , solve(root->right , maxi));
+        maxi = max(maxi , (root->val + l + r));
         
-        if(max(l,r) < 0)
-        {
-            return root->val;
-        }
-        
-        long res = max(l , r);
-        
-        return (res + root->val);
+        return (root->val + max(l,r));
         
     }
     int maxPathSum(TreeNode* root) {
         
-        if(!root)
-            return INT_MIN;
+        int maxi = INT_MIN;
         
-        int res = root->val;
-        if(root->left)
-        {
-            long curr= solve(root->left);
-            if(curr > 0)
-                res += curr;
-        }
-        if(root->right)
-        {
-            int curr = solve(root->right);
-            if(curr > 0)
-                res += curr;
-        }
-    
+        solve(root,maxi);
         
-        int l = maxPathSum(root->left);
-        int r = maxPathSum(root->right);
-        
-        
-        return max({res , l , r});
+        return maxi;
     }
 };
