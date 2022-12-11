@@ -2,25 +2,14 @@ class Solution {
 public:
     int pathSum(vector<int>& nums) {
         
-        map<int,map<int,int>> mpp;
+        unordered_map<int,unordered_map<int,int>> mpp;
         
-        for(auto it:nums)
+        for(auto &it:nums)
         {
             string curr = to_string(it);
             
             mpp[curr[0]-'0'][curr[1]-'0'] = curr[2]-'0';
         }
-        
-        
-//         for(auto it:mpp)
-//         {
-//             cout<<(it.first)<<"->";
-//             for(auto j:it.second)
-//             {
-//                 cout<<"("<<(j.first)<<","<<(j.second)<<")";
-//             }
-//             cout<<endl;
-//         }
         
         queue<pair<int,int>> q;
         q.push({nums[0]%10 , 1});
@@ -35,12 +24,10 @@ public:
                 int curr = q.front().first;
                 int pos = q.front().second;
                 q.pop();
-                // cout<<pos<<"->"<<(2*pos)-1<<" "<<(2*pos)<<endl;
-                // cout<<curr<<"->"<<currLevel<<"->"<<pos<<endl;
                 
                 if(mpp.find(currLevel+1) != mpp.end())
                 {
-                    map<int,int> it = mpp[currLevel+1];
+                    unordered_map<int,int> it = mpp[currLevel+1];
                     bool flag = true;
                     
                     if(it.find((2*pos)-1) != it.end())
