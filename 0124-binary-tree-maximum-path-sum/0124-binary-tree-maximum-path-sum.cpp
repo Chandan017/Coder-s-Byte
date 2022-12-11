@@ -11,11 +11,7 @@
  */
 class Solution {
 public:
-    long x = 0;
-    bool isLeaf(TreeNode* root)
-    {
-        return (!root->left && !root->right);
-    }
+
     long solve(TreeNode* root)
     {
         if(!root)
@@ -24,12 +20,12 @@ public:
         long l = solve(root->left);
         long r = solve(root->right);
         
-        if(max(l,r) == INT_MIN)
+        if(max(l,r) < 0)
         {
             return root->val;
         }
         
-        long res = max({l , r , x});
+        long res = max(l , r);
         
         return (res + root->val);
         
