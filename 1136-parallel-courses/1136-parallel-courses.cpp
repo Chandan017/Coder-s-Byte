@@ -19,15 +19,11 @@ public:
         {
             if(indegree[i] == 0)
             {
-                indegree[i] = -1;
                 q.push(i);
             }
         }
         
-        if(q.size() == 0)
-            return -1;
-        
-        int minTime = 0;
+        int minTime = 0 , takenCourses = 0;
         
         while(q.size())
         {
@@ -36,7 +32,7 @@ public:
             {
                 int curr = q.front();
                 q.pop();
-                
+                takenCourses++;
                 for(auto it:adj[curr])
                 {
                     indegree[it]--;
@@ -44,7 +40,6 @@ public:
                     if(indegree[it] == 0)
                     {
                         q.push(it);
-                        indegree[it] = -1;
                     }
                 }
             }
@@ -52,12 +47,8 @@ public:
             minTime++;
         }
         
-        for(int i=1;i<=n;i++)
-        {
-            if(indegree[i] != -1)
-                return -1;
-        }
-        
+        if(takenCourses != n)
+            return -1;
         return minTime;
         
         
