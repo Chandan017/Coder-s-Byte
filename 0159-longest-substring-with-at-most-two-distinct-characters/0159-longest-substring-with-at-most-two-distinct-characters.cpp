@@ -2,7 +2,7 @@ class Solution {
 public:
     int lengthOfLongestSubstringTwoDistinct(string s) {
         
-        map<char,int> mpp;
+        unordered_map<char,int> mpp;
         int prev = 0 , maxLen = 0;
         
         for(int i=0;i<s.length();i++)
@@ -12,9 +12,7 @@ public:
             if(mpp.size() <= 2)
             {
                 int currLen = i-prev+1;
-                
                 maxLen = max(maxLen , currLen);
-                cout<<currLen<<" ";
             }
             else
             {
