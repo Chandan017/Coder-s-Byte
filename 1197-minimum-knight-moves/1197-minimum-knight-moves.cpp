@@ -8,7 +8,6 @@ public:
         int dx[] = {-1 , -2 , -2 , -1 , 1 , 2 , 2 , 1};
         int dy[] = {-2 , -1 , 1 , 2 , 2 , 1 , -1 , -2};
         vector<vector<bool>> vis(1000 , vector<bool>(1000,false));
-        // vis[300][300] = true;
         
         while(q.size())
         {
