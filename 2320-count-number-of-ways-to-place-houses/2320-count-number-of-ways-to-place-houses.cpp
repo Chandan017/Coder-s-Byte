@@ -1,31 +1,21 @@
 class Solution {
 public:
-    int mod = 1e9+7;
-    
-    int getCnt(int n , vector<int> &dp)
-    {
-        if(n<=0)
-            return 1;
-        
-        if(dp[n] != -1)
-            return dp[n];
-        
-        int place = getCnt(n-2 , dp);
-        int notPlace = getCnt(n-1 , dp);
-        
-        dp[n] = (place + notPlace)%mod;
-        
-        return dp[n];
-    }
+
     int countHousePlacements(int n) {
+
+        int mod = 1e9+7;
+        long first = 1 , second = 1 , total = 2;
         
-        vector<int> dp(n+1 , -1);
+        for(int i=2;i<=n;i++)
+        {
+            second = first;
+            first = total;
+            total = (first + second)%mod;
+        }
         
-        long currCnt = getCnt(n , dp);
+        return (total*total)%mod;
         
-        int res = (currCnt%mod*currCnt%mod)%mod;
-        
-        return res;
+     
         
     }
 };
