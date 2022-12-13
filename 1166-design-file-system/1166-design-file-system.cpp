@@ -23,11 +23,7 @@ public:
             if(mpp.find(path) == mpp.end())
                 return false;
         }
-        
-        
-        
-        // curr += '/';
-        // reverse(curr.begin() , curr.end());
+
         mpp[curr] = value;
         return true;
         
