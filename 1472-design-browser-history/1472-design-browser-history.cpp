@@ -29,12 +29,12 @@ public:
     
     string back(int steps) {
         
-        while(head->left)
+        while(head->left && steps--)
         {
             head = head->left;
-            steps--;
-            if(steps == 0)
-                break;
+            // steps--;
+            // if(steps == 0)
+            //     break;
         }
         
         return head->data;
@@ -42,12 +42,12 @@ public:
     
     string forward(int steps) {
         
-        while(head->right)
+        while(head->right && steps--)
         {
             head = head->right;
-            steps--;
-            if(steps == 0)
-                break;
+            // steps--;
+            // if(steps == 0)
+            //     break;
         }
         
         return head->data;
