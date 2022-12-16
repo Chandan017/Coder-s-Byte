@@ -17,12 +17,9 @@ public:
         int r = 0 , c = dim[1]-1;
         
         int ind = INT_MAX;
-        // cout<<r<<" "<<c<<endl;
         while(c>=0 && r<dim[0])
         {
-            // cout<<"a";
             int val = binaryMatrix.get(r , c);
-            // cout<<val<<" ";
             if(val == 0)
                 r++;
             else
