@@ -32,9 +32,6 @@ public:
         while(head->left && steps--)
         {
             head = head->left;
-            // steps--;
-            // if(steps == 0)
-            //     break;
         }
         
         return head->data;
@@ -45,9 +42,6 @@ public:
         while(head->right && steps--)
         {
             head = head->right;
-            // steps--;
-            // if(steps == 0)
-            //     break;
         }
         
         return head->data;
