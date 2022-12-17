@@ -8,9 +8,7 @@ public:
         for(int i=0;i<n-1;i++)
         {
             int diff = nums[i+1]-nums[i] - 1;
-            
-            // cnt += diff;
-            
+                        
             if(diff >= k)
                 return nums[i]+k;
             
