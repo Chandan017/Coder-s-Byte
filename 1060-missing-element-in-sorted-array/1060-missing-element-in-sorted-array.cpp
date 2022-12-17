@@ -1,21 +1,31 @@
 class Solution {
 public:
+    int missing(int ind , vector<int> &nums)
+    {
+        return (nums[ind]-nums[0]-ind);
+    }
     int missingElement(vector<int>& nums, int k) {
         
-        
-        int cnt = 0;
         int n = nums.size();
-        for(int i=0;i<n-1;i++)
+        
+        if(k> missing(n-1 , nums))
+            return nums[n-1] + k - missing(n-1 , nums);
+        
+        int low = 0 , high = n-1;
+        
+        while(low < high)
         {
-            int diff = nums[i+1]-nums[i] - 1;
-                        
-            if(diff >= k)
-                return nums[i]+k;
+            int mid = low + (high-low)/2;
             
-            k -= diff;
+            if(missing(mid , nums) < k)
+                low = mid+1;
+            else
+                high = mid;
         }
         
-        return nums[n-1]+k;
+        int res = nums[low-1] + k - missing(low-1 , nums);
+        
+        return res;
         
     }
 };
