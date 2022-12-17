@@ -25,10 +25,7 @@ public:
     
     void fill(vector<vector<char>> &board , int r ,int c)
     {
-//         if(r<0 || c<0 || r>=n || c>=m || board[r][c] == 'M')
-//             return ;
-        
-        
+
         int adjMines = getCnt(board , r , c);
         
         if(adjMines == 0)
