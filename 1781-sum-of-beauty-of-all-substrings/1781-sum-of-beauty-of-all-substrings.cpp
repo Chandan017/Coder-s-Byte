@@ -5,7 +5,7 @@ public:
     {
         int maxi = INT_MIN , mini = INT_MAX;
         
-        for(auto it:mpp)
+        for(auto &it:mpp)
         {
             maxi = max(maxi , it.second);
             mini = min(mini , it.second);
