@@ -3,7 +3,7 @@ public:
     vector<string> subdomainVisits(vector<string>& cpdomains) {
         
         
-        map<string,int> mpp;
+        unordered_map<string,int> mpp;
         
         
         for(auto s:cpdomains)
@@ -31,15 +31,11 @@ public:
                 reverse(temp.begin() , temp.end());
                 mpp[temp] += times;
                 i--;
-                // cout<<temp<<" ";
                 curr += '.';
             }
 
-            
-            // cout<<times<<" ";
         }
         
-        // cout<<endl;
         vector<string> res;
         
         
