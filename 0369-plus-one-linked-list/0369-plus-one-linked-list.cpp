@@ -28,9 +28,9 @@ public:
     }
     ListNode* plusOne(ListNode* head) {
         
-        ListNode* rev = getReverse(head);
+        head = getReverse(head);
         
-        ListNode* temp = rev;
+        ListNode* temp = head;
         int carry = 1;
         
         while(temp || carry)
@@ -44,8 +44,8 @@ public:
             temp = temp->next;
         }
         
-        rev = getReverse(rev);
-        return rev;
+        head = getReverse(head);
+        return head;
         
     }
 };
