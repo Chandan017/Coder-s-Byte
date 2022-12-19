@@ -4,7 +4,7 @@ public:
         
         vector<int> res;
         int n = nums.size() , prev = 0;
-        map<int,int> mpp;
+        unordered_map<int,int> mpp;
         for(int i=0;i<n;i++)
         {
             
