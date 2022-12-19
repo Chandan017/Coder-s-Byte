@@ -29,11 +29,14 @@ public:
         {
             if(mpp[temp->val] == 1)
             {
-                dummy->next = new ListNode(temp->val);
+                dummy->next = temp;
                 dummy = dummy->next;
+                temp = temp->next;
+
+                dummy->next = NULL;
             }
-            
-            temp = temp->next;
+            else
+                temp = temp->next;
                 
         }
         
