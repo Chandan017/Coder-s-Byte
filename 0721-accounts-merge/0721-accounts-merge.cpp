@@ -44,10 +44,11 @@ public:
             if(vis.find(firstMail) == vis.end())
             {
                 vector<string> curr;
+                curr.push_back(name);
+                
                 takeAll(firstMail , curr);
                 
-                sort(curr.begin() , curr.end());
-                curr.insert(curr.begin() , name);
+                sort(curr.begin()+1 , curr.end());
                 
                 res.push_back(curr);
             }
