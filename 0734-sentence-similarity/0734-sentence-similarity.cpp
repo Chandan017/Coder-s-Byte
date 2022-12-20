@@ -11,7 +11,7 @@ public:
         for(auto it:similarPairs)
         {
             st.insert({it[0] , it[1]});
-            st.insert({it[1] , it[0]});
+            // st.insert({it[1] , it[0]});
 
         }
         
