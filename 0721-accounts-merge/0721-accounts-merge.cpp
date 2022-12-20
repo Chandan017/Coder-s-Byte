@@ -1,7 +1,7 @@
 class Solution {
 public:
-    map<string,vector<string>> adj;
-    set<string> vis;
+    unordered_map<string,vector<string>> adj;
+    unordered_set<string> vis;
 
 
     void takeAll(string node , vector<string> &curr)
@@ -23,7 +23,7 @@ public:
     vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
         
         
-        for(auto it:accounts)
+        for(auto &it:accounts)
         {
             string firstMail = it[1];
             
@@ -37,7 +37,7 @@ public:
         
         vector<vector<string>> res;
         
-        for(auto it:accounts)
+        for(auto &it:accounts)
         {
             string name = it[0] , firstMail = it[1];
             
