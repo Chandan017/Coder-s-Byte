@@ -29,7 +29,7 @@ public:
         if(n != m)
             return false;
         
-        for(auto it:similarPairs)
+        for(auto &it:similarPairs)
         {
             mpp[it[0]].insert(it[1]);
             mpp[it[1]].insert(it[0]);
