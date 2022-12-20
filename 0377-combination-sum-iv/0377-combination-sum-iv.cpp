@@ -10,7 +10,7 @@ public:
         int cnt = 0;
         for(auto it:nums)
         {
-            if(target - it>=0)
+            if(target - it >=0)
             {
                 cnt += solve(nums , target-it , dp);
             }
