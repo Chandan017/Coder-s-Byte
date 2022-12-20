@@ -1,8 +1,8 @@
 class Solution {
 public:
-    map<string,set<string>> mpp;
+    unordered_map<string,unordered_set<string>> mpp;
     
-    bool check(string &src , string &dest , set<string> &vis)
+    bool check(string &src , string &dest , unordered_set<string> &vis)
     {
         
         if(src == dest)
@@ -40,7 +40,7 @@ public:
         {
             if(sentence1[i] != sentence2[i])
             {
-                set<string> vis;
+                unordered_set<string> vis;
                 bool curr = check(sentence1[i] , sentence2[i] , vis);
                 
                 if(!curr)
