@@ -21,7 +21,6 @@ public:
             int firstParent = getParent(it[0]);
             int secondParent = getParent(it[1]);
             
-            // cout<<firstParent<<"->"<<secondParent<<endl;
             if(firstParent != secondParent)
             {
                 parent[firstParent] = secondParent;
