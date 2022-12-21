@@ -16,7 +16,6 @@ public:
             {
                 int node = q.front();
                 q.pop();
-                // cout<<node<<"->"<<col[node]<<endl;
                 
                 for(auto it:adj[node])
                 {
@@ -48,25 +47,16 @@ public:
         
         vector<int> col(n+1 , -1);
         
-        bool canFill = true;
-        
         for(int i=1;i<=n;i++)
         {
             if(col[i] == -1)
             {
                 bool curr = fill(i , adj , col);
-                // return true;
                 
                 if(!curr)
-                {
-                    // cout<<i<<endl;
                     return false;
-                }
             }
         }
-        cout<<endl;
-        // if(!canFill)
-        //     return false;
         
         return true;
         
