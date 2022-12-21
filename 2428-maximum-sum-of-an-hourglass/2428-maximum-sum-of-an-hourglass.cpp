@@ -17,7 +17,6 @@ public:
             for(int j=1;j<m-1;j++)
             {
                 int currSum = getSum(grid , i , j);
-                
                 maxSum = max(maxSum , currSum);
             }
         }
