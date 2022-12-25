@@ -19,7 +19,6 @@ public:
             pq.push({sticks[i] , i});
         }
         
-        // sort(nums.begin() , nums.end());
         parent.resize(n);        
         for(int i=0;i<n;i++)
             parent[i] = i;
@@ -30,24 +29,21 @@ public:
        {
            auto x = pq.top();
            pq.pop();
-           // cout<<x[0]<<" ";
+           
            if(pq.size())
            {
                auto y = pq.top();
                pq.pop();
-               // cout<<y[0]<<" ";
+               
                if(getParent(x[1]) != getParent(y[1]))
                {
                    minCost += (x[0]+y[0]);
                    parent[x[1]] = y[1];
                    
-                   // cout<<x[0]<<"->"<<y[0]<<"  ";
                    pq.push({(x[0] + y[0]) , x[1]});
                }
            }
-           // cout<<endl;
        }
-        // cout<<endl;
         
         return minCost;
         
