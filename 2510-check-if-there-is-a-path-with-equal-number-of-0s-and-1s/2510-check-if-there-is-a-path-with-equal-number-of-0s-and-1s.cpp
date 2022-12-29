@@ -6,10 +6,7 @@ public:
     {
         if(r>=n || c>=m || target<0 || dp[r][c][target])
             return false;
-        
-        if(dp[r][c][target])
-            return dp[r][c][target];
-        
+                
         dp[r][c][target] = true;
         
         target -= grid[r][c];
