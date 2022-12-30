@@ -20,8 +20,6 @@ public:
                 q.push({i,0});
         }
         
-    
-        
         while(q.size())
         {
             int node = q.front().first;
