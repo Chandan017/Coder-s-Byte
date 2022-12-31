@@ -12,7 +12,6 @@ public:
         
         if(grid[r][c] == 2)
         {
-            // cout<<coveredBoxes<<" ";
             if(coveredBoxes == totalBoxes)
                 ways++;
             return ;
@@ -54,9 +53,7 @@ public:
                 }
             }
         }
-        
-        // cout<<totalBoxes<<endl;?
-        
+                
         solve(grid , sx , sj , 1);
         
         return ways;
