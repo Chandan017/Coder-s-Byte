@@ -12,12 +12,9 @@ public:
                 lowerCnt++;
         }
         
-        if(upperCnt == n || lowerCnt == n)
+        if(upperCnt == n || lowerCnt == n || (lowerCnt == n-1 && isupper(word[0])))
             return true;
-        
-        if(upperCnt == 1 && lowerCnt == n-1 && isupper(word[0]))
-            return true;
-        
+                
         return false;
         
     }
