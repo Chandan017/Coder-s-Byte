@@ -3,7 +3,7 @@ public:
     int minimumRounds(vector<int>& tasks) {
         
         
-        map<int,int> mpp;
+        unordered_map<int,int> mpp;
         
         for(auto it:tasks)
             mpp[it]++;
