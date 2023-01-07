@@ -1,8 +1,8 @@
 class DataStream {
 public:
     
-    queue<int> q;
-    int n , val , diffCnt = 0;
+
+    int n , val , ind = 0 , prev = 0;
     DataStream(int value, int k) {
         
         n = k;
@@ -11,23 +11,16 @@ public:
     
     bool consec(int num) {
         
+        ind++;
+        
         if(num != val)
-            diffCnt++;
-        
-        q.push(num);
-        
-        if(q.size() > n)
         {
-            int curr = q.front();
-            q.pop();
-            if(curr != val)
-                diffCnt--;
+            prev = ind;
+            return false;
         }
         
-        if(q.size() < n || diffCnt)
+        if(ind-prev < n)
             return false;
-        
-        
         return true;
     }
 };
