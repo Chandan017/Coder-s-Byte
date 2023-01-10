@@ -12,22 +12,22 @@
 class Solution {
 public:
     int maxi = 0;
-    void solve(TreeNode* root , string prevDir , int cnt)
+    void solve(TreeNode* root , int dir , int cnt)
     {
 
         if(!root)
             return ;
-        maxi = max(maxi , cnt+1);
+        maxi = max(maxi , cnt);
 
-        if(prevDir == "left")
+        if(dir == 1)
         {
-            solve(root->right , "right" , cnt+1);
-            solve(root->left , "left" , 0);
+            solve(root->right , 0 , cnt+1);
+            solve(root->left , 1 , 1);
         }
         else
         {
-            solve(root->left , "left" , cnt+1);
-            solve(root->right , "right" , 0);
+            solve(root->left , 1 , cnt+1);
+            solve(root->right , 0 , 1);
         }
         
         
@@ -35,15 +35,8 @@ public:
     }
     int longestZigZag(TreeNode* root) {
         
-        if(root->left)
-        {
-            solve(root->left , "left" , 0);
-        }
-        
-        if(root->right)
-        {
-            solve(root->right , "right" , 0);
-        }
+        solve(root->left , 1 , 1);
+        solve(root->right , 0 , 1);
         
         return maxi;
         
