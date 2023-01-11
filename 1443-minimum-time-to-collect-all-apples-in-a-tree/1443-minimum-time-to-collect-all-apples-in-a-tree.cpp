@@ -5,7 +5,7 @@ public:
     {
         int totalTime = 0 , childTime = 0;
         
-        for(auto it:adj[node])
+        for(auto &it:adj[node])
         {
             if(it != parent)
             {
@@ -23,7 +23,7 @@ public:
         
         vector<vector<int>> adj(n);
         
-        for(auto it:edges)
+        for(auto &it:edges)
         {
             adj[it[0]].push_back(it[1]);
             adj[it[1]].push_back(it[0]);
