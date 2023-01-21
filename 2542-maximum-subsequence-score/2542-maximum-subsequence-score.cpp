@@ -14,12 +14,14 @@ public:
         {
             nums.push_back({nums2[i] , nums1[i]});
         }
+        
+        
         sort(nums.begin() , nums.end() , comp);
         long long res = 0 , sum = 0;
         
         priority_queue<long long,vector<long long>,greater<long long>> pq;
         
-        for(auto it:nums)
+        for(auto &it:nums)
         {
             if(pq.size() == k)
             {
