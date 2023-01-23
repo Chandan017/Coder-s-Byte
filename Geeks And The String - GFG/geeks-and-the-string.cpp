@@ -9,29 +9,18 @@ class Solution {
     string removePair(string s) {
         // code here
         
-        stack<char> st;
+        string res = "";
         
         for(auto it:s)
         {
-            if(st.size() && st.top()==it)
-                st.pop();
+            if(res.length() && res.back()==it)
+                res.pop_back();
             else
-                st.push(it);
+                res += it;
         }
         
-        if(!st.size())
+        if(res.length() == 0)
             return "-1";
-            
-        string res = "";
-        
-        while(st.size())
-        {
-            res += st.top();
-            st.pop();
-        }
-        
-        reverse(res.begin() , res.end());
-        
         
         return res;
     }
