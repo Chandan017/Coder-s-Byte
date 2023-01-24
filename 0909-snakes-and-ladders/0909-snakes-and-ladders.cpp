@@ -26,6 +26,7 @@ public:
                     int c = (nextpos-1)%n;           
                     if(r%2 == n%2)     
                         c = n-c-1;
+                    
                     if(!visited[r][c])
                     {
                         visited[r][c]=true;
@@ -38,6 +39,7 @@ public:
             }
             steps++;
         }
+        
         return -1;        
     }
 };
