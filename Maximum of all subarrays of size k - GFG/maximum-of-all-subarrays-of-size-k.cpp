@@ -26,7 +26,6 @@ class Solution
             {
                 int maxi = (mpp.rbegin())->first;
                 
-                
                 res.push_back(maxi);
                 mpp[arr[i-k+1]]--;
                 
