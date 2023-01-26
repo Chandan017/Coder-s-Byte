@@ -15,15 +15,22 @@ class Solution
     bool checkPangram (string &str) {
         // your code here
         
-        unordered_set<char> st;
+        vector<bool> vis(26,false);
         
         for(auto it:str)
         {
-            if(isupper(it) || islower(it))
-                st.insert(tolower(it));
+            if(isupper(it))
+                vis[it-'A'] = true;
+            else if(islower(it))
+                vis[it-'a'] = true;
         }
         
-        return (st.size()==26);
+        for(auto it:vis)
+        {
+            if(it == false)
+                return false;
+        }
+        return true;
     }
 
 };
