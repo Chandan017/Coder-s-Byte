@@ -18,9 +18,9 @@ public:
         if(dp[ind][prev] != -1)
             return dp[ind][prev];
         
-        long long int red = 1e11; 
-        long long int blue = 1e11;
-        long long int green = 1e11;
+        long long int red = LONG_MAX; 
+        long long int blue = LONG_MAX;
+        long long int green = LONG_MAX;
         
         if(prev == 0)
         {
