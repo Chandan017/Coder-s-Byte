@@ -6,7 +6,6 @@ public:
     {
         for(int i=0;i<min(a.length() , b.length());i++)
         {
-            // cout<<mpp[a[i]]<<" "<<mpp[b[i]]<<"  ";
             if(mpp[a[i]] < mpp[b[i]])
                 return false;
             if(mpp[a[i]] > mpp[b[i]])
@@ -23,14 +22,12 @@ public:
             mpp[order[i]] = i;
         
         int n = words.size();
-        // cout<<"Starts"<<endl;
         for(int i=0;i<n-1;i++)
         {
             string a = words[i] , b = words[i+1];
             
             if(notValid(a , b))
                 return false;
-            // cout<<endl;
         }
         
         return true;
