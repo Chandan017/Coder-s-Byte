@@ -3,25 +3,25 @@ public:
     int trap(vector<int>& height) {
         
         int n = height.size();
-        vector<int> rMax(n);
         
-        int maxi = 0;
-        for(int i=n-1;i>=0;i--)
-        {
-            maxi = max(maxi , height[i]);
-            rMax[i] = maxi;
-        }
+        int l = 0 , r = n-1 , leftMax = 0 , rightMax = 0 , res = 0;
         
-        int res = 0 , lMax = 0;
-        for(int i=0;i<n;i++)
+        while(l<r)
         {
-            lMax = max(lMax , height[i]);
+            leftMax = max(leftMax , height[l]);
+            rightMax = max(rightMax , height[r]);
             
-            int total = min(rMax[i] , lMax);
-            res += (total-height[i]);
+            if(leftMax < rightMax)
+            {
+                res += (leftMax - height[l]);
+                l++;
+            }
+            else
+            {
+                res += (rightMax - height[r]);
+                r--;
+            }
         }
-      
-        
         return res;
         
     }
