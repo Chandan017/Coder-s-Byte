@@ -45,8 +45,6 @@ public:
             mini = stoi(s);
         }
         
-        cout<<maxi<<" "<<mini<<endl;
-        
         return (maxi - mini);
         
     }
