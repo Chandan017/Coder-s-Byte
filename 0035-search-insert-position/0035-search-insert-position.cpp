@@ -16,6 +16,6 @@ public:
                 h = mid-1;
         }
         
-        return h+1;
+        return l;
     }
 };
