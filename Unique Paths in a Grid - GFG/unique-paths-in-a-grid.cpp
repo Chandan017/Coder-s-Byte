@@ -9,9 +9,9 @@ using namespace std;
 class Solution {
   public:
   
-    long mod = 1e9+7;
+    int mod = 1e9+7;
     
-    long solve(vector<vector<int>> &grid , int r , int c , vector<vector<int>> &dp)
+    int solve(vector<vector<int>> &grid , int r , int c , vector<vector<int>> &dp)
     {
         if(r<0 || c<0 || grid[r][c] == 0)
             return 0;
@@ -22,8 +22,8 @@ class Solution {
         if(dp[r][c] != -1)
             return dp[r][c];
             
-        long up = solve(grid , r-1 , c , dp);
-        long left = solve(grid , r , c-1 , dp);
+        int up = solve(grid , r-1 , c , dp)%mod;
+        int left = solve(grid , r , c-1 , dp)%mod;
         
         dp[r][c] = (up+left)%mod;
         
@@ -35,7 +35,7 @@ class Solution {
         if(grid[0][0]==0 || grid[n-1][m-1]==0)
             return 0;
         vector<vector<int>> dp(n+1 , vector<int>(m+1 , -1));
-        long res = solve(grid , n-1 , m-1 , dp);
+        int res = solve(grid , n-1 , m-1 , dp);
         
         return res;
     }
