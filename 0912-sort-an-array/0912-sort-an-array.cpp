@@ -1,70 +1,61 @@
 class Solution {
 public:
     
-    void merge(vector<int> &nums , int start , int mid , int end)
+    void mergeSort(vector<int> &nums , int start, int end)
     {
         if(start >= end)
             return ;
+        int mid = (start+end)/2;
+        mergeSort(nums , start , mid);
+        mergeSort(nums , mid+1 , end);
         
-        int i = start , j = mid+1 , k = 0 , len = end-start+1;
-        vector<int> res(len , 0);
-        
-        while(i <= mid && j <= end)
-        {
-            if(nums[i] <= nums[j])
-            {
-                res[k] = nums[i];
-                i++;
-            }
-            else
-            {
-                res[k] = nums[j];
-                j++;
-            }
-            k++;
-        }
-        
-        while(i <= mid)
-        {
-            res[k] = nums[i];
-            i++;
-            k++;
-        }
-        
-        while(j <= end)
-        {
-            res[k] = nums[j];
-            j++;
-            k++;
-        }
-        
-        for(k=0;k<len;k++)
-        {
-            nums[k+start] = res[k];
-        }
-        
+        merge(nums , start , mid , end);
         
         return ;
     }
     
-    void mergeSort(vector<int> &nums , int start , int end)
+    void merge(vector<int> &nums , int start , int mid , int end)
     {
-        if(start < end)
+        int i = start , j = mid+1;
+        vector<int> res;
+        while(i<=mid && j<=end)
         {
-            int mid = start + (end-start)/2;
-            
-            mergeSort(nums , start , mid);
-            mergeSort(nums , mid+1 , end);
-            
-            merge(nums , start , mid , end);
-            
-            return ;
+            if(nums[i]<=nums[j])
+            {
+                res.push_back(nums[i]);
+                i++;
+            }
+            else
+            {
+                res.push_back(nums[j]);
+                j++;
+            }
+        }
+        
+        while(i<=mid)
+        {
+            res.push_back(nums[i]);
+            i++;
+        }
+        
+        while(j<=end)
+        {
+            res.push_back(nums[j]);
+            j++;
+        }
+        
+        i = start;
+        for(auto it:res)
+        {
+            nums[i] = it;
+            i++;
         }
         return ;
     }
     vector<int> sortArray(vector<int>& nums) {
         
-        mergeSort(nums , 0 , nums.size()-1);
+        int n = nums.size();
+        mergeSort(nums , 0 , n-1);
         
         return nums;
         
