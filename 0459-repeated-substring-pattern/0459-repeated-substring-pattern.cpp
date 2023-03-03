@@ -19,7 +19,6 @@ public:
                     return true;
             }
             len--;
-            
             curr.pop_back();
         }
         cout<<endl;
