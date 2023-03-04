@@ -18,7 +18,6 @@ public:
             if(curr < 0)
                 curr = 0;
             res += curr;
-            cout<<res<<" ";
         }
         
         cout<<endl;
