@@ -10,7 +10,7 @@ using namespace std;
 class Solution {
 
   public:
-    int noConseBits(int n) {
+   int noConseBits(int n) {
         // code here
         
         string s = bitset<64> (n).to_string();
