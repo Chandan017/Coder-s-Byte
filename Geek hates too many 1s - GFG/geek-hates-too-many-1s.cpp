@@ -26,8 +26,6 @@ class Solution {
                 i++;
         }
         
-        // cout<<s<<endl;
-        
         int res = stoi(s, 0, 2);
         
         
